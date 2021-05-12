@@ -177,7 +177,7 @@ let camera, cubeCamera, scene, renderer;
 
 let cameraControls;
 
-let groundPlane, wallMat;
+let groundPlane, light, light2, light3, light4, light5;
 
 init();
 
@@ -189,6 +189,9 @@ function init() {
     renderer = new THREE.WebGLRenderer( { antialias: true } );
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( WIDTH, HEIGHT );
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
+
     container.appendChild( renderer.domElement );
 
     // gui controls
@@ -217,6 +220,9 @@ function init() {
     // scene
     scene = new THREE.Scene();
 
+    scene.background =  new THREE.Color( '#0a001f' )
+    scene.fog = new THREE.FogExp2(0x0a001f, 0.004);
+
     // camera
     camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR );
     camera.position.set( 280, 106, - 5 );
@@ -240,6 +246,11 @@ function init() {
     cubeCamera.position.set( 0, - 100, 0 );
     scene.add( cubeCamera );
 
+
+
+
+
+
     // ground floor ( with box projected environment mapping )
     const loader = new THREE.TextureLoader();
     const rMap = loader.load( 'textures/lavatile.jpg' );
@@ -247,18 +258,21 @@ function init() {
     rMap.wrapT = THREE.RepeatWrapping;
     rMap.repeat.set( 15, 10 );
 
-    const defaultMat = new THREE.MeshPhysicalMaterial( {
+    const defaultMat = new THREE.MeshStandardMaterial( {
+        color: new THREE.Color( '#280094' ),
         roughness: 1,
         envMap: cubeRenderTarget.texture,
         roughnessMap: rMap
     } );
 
-    const boxProjectedMat = new THREE.MeshPhysicalMaterial( {
-        color: new THREE.Color( '#FFFFFF' ),
+    const boxProjectedMat = new THREE.MeshStandardMaterial( {
+        color: new THREE.Color( '#280094' ),
         roughness: 1,
         envMap: cubeRenderTarget.texture,
         roughnessMap: rMap
     } );
+
+
 
     boxProjectedMat.onBeforeCompile = function ( shader ) {
 
@@ -281,8 +295,92 @@ function init() {
 
     };
 
+
+
+    // const amb = new THREE.AmbientLight(0xFFFFFF, 1);
+    // scene.add(amb);
+
+    // const bulbGeometry = new THREE.SphereGeometry( 0.02, 16, 8 );
+    // const bulbLight = new THREE.PointLight( 0xffee88, .5, 100, 1 );
+    //
+    // const geometry = new THREE.BoxGeometry( 30, 30, 30 );
+    //
+    // const bulbMat = new THREE.MeshStandardMaterial( {
+    //     emissive: 0xffffee,
+    //     emissiveIntensity: 1,
+    //     color: 0x000000
+    // } );
+    // bulbLight.add( new THREE.Mesh( geometry, bulbMat ) );
+    // bulbLight.position.set( 0, 2, 0 );
+    // bulbLight.castShadow = true;
+    // scene.add( bulbLight );
+
+
+
+    const geometry = new THREE.BoxGeometry( 30, 30, 30 );
+    // const material = new THREE.MeshStandardMaterial( {color: 0xFFFFFF} );
+    const rMapCube = loader.load( 'textures/lavatile.jpg' );
+    rMapCube.wrapS = THREE.RepeatWrapping;
+    rMapCube.wrapT = THREE.RepeatWrapping;
+    rMapCube.repeat.set( 1, 1 );
+
+    const material = new THREE.MeshStandardMaterial( {
+        color: new THREE.Color( '#0d4d67' ),
+        roughness: 1,
+        envMap: cubeRenderTarget.texture,
+        roughnessMap: rMapCube
+    } );
+
+    const cube = new THREE.Mesh( geometry, material );
+    cube.position.x = 0
+    cube.position.y = -35
+    cube.position.z = 0
+
+    cube.castShadow = true; //default is false
+    cube.receiveShadow = false; //default
+
+    scene.add( cube );
+
+
+
+    light = new THREE.PointLight( 0xFFFFFF, 1.5, 300 );
+    // light.position.set( 100, 20, 100 );
+    light.castShadow = true; // default false
+
+    //Set up shadow properties for the light
+    light.shadow.mapSize.width = 512; // default
+    light.shadow.mapSize.height = 512; // default
+    light.shadow.camera.near = 0.5; // default
+    light.shadow.camera.far = 500; // default
+
+    scene.add( light );
+    let helper = new THREE.PointLightHelper( light, 5 );
+    scene.add( helper );
+
+
+
+
+
+
+    light2 = new THREE.PointLight( 0xFF55FF, 1.5, 300 );
+    light2.castShadow = true; // default false
+    scene.add( light2 );
+    let helper2 = new THREE.PointLightHelper( light2, 5 );
+    scene.add( helper2 );
+
+
+    light3 = new THREE.PointLight( 0x1155FF, 1.5, 300 );
+    light3.castShadow = true; // default false
+    scene.add( light3 );
+    let helper3 = new THREE.PointLightHelper( light3, 5 );
+    scene.add( helper3 );
+
+
+
+
     groundPlane = new THREE.Mesh( new THREE.PlaneGeometry( 1000, 1000, 10 ), boxProjectedMat );
     groundPlane.rotateX( - Math.PI / 2 );
+    groundPlane.receiveShadow = true;
     groundPlane.position.set( 0, - 49, 0 );
     scene.add( groundPlane );
 
@@ -309,6 +407,16 @@ function init() {
     const redRectLightHelper = new RectAreaLightHelper( redRectLight );
     redRectLight.add( redRectLightHelper );
 
+    animate();
+
+}
+
+
+
+
+function animate() {
+
+    requestAnimationFrame( animate );
     render();
 
 }
@@ -316,6 +424,29 @@ function init() {
 
 
 function render() {
+
+    const time = Date.now() * 0.0002;
+
+    if (light) {
+        light.position.x = Math.sin( time * 6.7 ) * 50;
+        light.position.y = Math.cos( time * 4.1 ) * 20 - 20;
+        light.position.z = Math.cos( time * 6.3 ) * 50;
+    }
+
+    if (light2) {
+        light2.position.x = Math.sin( time * 10.7 ) * 50 - 300;
+        light2.position.y = Math.cos( time * 14.1 ) * 20 - 20;
+        light2.position.z = Math.cos( time * 4.3 ) * 50;
+    }
+
+    if (light3) {
+        light3.position.x = Math.sin( time * 4.7 ) * 30;
+        light3.position.y = Math.cos( time * 5.1 ) * 20 - 20;
+        light3.position.z = Math.cos( time * 3.3 ) * 40;
+    }
+
+
+
 
     renderer.render( scene, camera );
 
