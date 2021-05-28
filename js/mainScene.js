@@ -48,22 +48,28 @@ function init() {
     // LIGHTS
 
     const ambient = new THREE.AmbientLight( 0xffffff , 1);
-    // scene.add( ambient );
+    scene.add( ambient );
 
-    pointLight = new THREE.PointLight( 0xffddff, 10 );
-    pointLight.position.y = 2000
-    pointLight.position.z = -1200
+    pointLight = new THREE.PointLight( 0xffddff, 50 );
+    // pointLight.position.y = 2000
+    pointLight.position.z = -2200
     scene.add( pointLight );
 
-    pointLight2 = new THREE.PointLight( 0xffddff, 10 );
-    pointLight2.position.y = -2000
-    pointLight2.position.z = -1200
+    pointLight2 = new THREE.DirectionalLight( 0xff0000, 1 );
+    pointLight2.lookAt(0,0,0)
+    pointLight2.position.y = -800
+    pointLight2.position.z = -4000
     scene.add( pointLight2 );
 
+    let helper = new THREE.DirectionalLightHelper( pointLight2, 5 );
+    scene.add( helper );
 
-    pointLight3 = new THREE.PointLight( 0x009900, 15 );
+
+
+
+    pointLight3 = new THREE.PointLight( 0x009900, 10 );
     pointLight3.position.y = 0
-    pointLight3.position.z = 2500
+    pointLight3.position.z = 2600
     scene.add( pointLight3 );
 
 
@@ -77,18 +83,32 @@ function init() {
 
     // material samples
 
-    const cubeMaterial = new THREE.MeshPhysicalMaterial( { color: 0x111111, envMap: textureCube, refractionRatio: 1.9, reflectivity: 0.5 } );
+    const cubeMaterial = new THREE.MeshPhysicalMaterial( {
+        color: 0x111111,
+        envMap: textureCube,
+        refractionRatio: .9,
+        reflectivity: 0.5,
+
+            // map: null,
+            // metalness: 1,
+            // roughness: 1,
+            opacity: 0.7,
+            side: THREE.BackSide,
+            transparent: true,
+            envMapIntensity: 5,
+            premultipliedAlpha: true
+    } );
     // const cubeMaterial2 = new THREE.MeshPhongMaterial( { color: 0xccfffd, envMap: textureCube, refractionRatio: 0.985 } );
     // const cubeMaterial1 = new THREE.MeshPhongMaterial( { color: 0xffffff, envMap: textureCube, refractionRatio: 0.98 } );
 
-    //
+
 
     const gemBackMaterial = new THREE.MeshPhysicalMaterial( {
         map: null,
-        color: 0x444444,
+        color: 0x111111,
         metalness: .5,
         roughness: .5,
-        opacity: 0.1,
+        opacity: 0.9,
         side: THREE.BackSide,
         transparent: true,
         envMapIntensity: 5,
@@ -98,13 +118,14 @@ function init() {
 
     const gemFrontMaterial = new THREE.MeshPhysicalMaterial( {
         map: null,
-        color: 0x444444,
+        color: 0x111111,
         metalness: .5,
-        roughness: .5,
-        opacity: 0.1,
+        envMap: textureCube,
+        roughness: .1,
+        opacity: 0.6,
         side: THREE.FrontSide,
         transparent: true,
-        envMapIntensity: 10,
+        envMapIntensity: 1,
         premultipliedAlpha: true
     } );
 
@@ -125,7 +146,7 @@ function init() {
 
     const loader = new OBJLoader();
     loader.load( 'models/prism2.obj', function ( object ) {
-        // console.log(obj.children[0].geometry)
+        // console.log(obj?ect.children[0].geometry)
 
         object.traverse( function ( child ) {
 
@@ -152,7 +173,7 @@ function init() {
 
         } );
 
-        // createScene( obj.children[0].geometry, cubeMaterial );
+        // createScene( obj?ect.children[0].geometry, cubeMaterial );
 
     }, function (e) {
         console.log(e);
@@ -221,8 +242,8 @@ function render() {
 
     camera.lookAt( scene.position );
 
-    // pointLight.position.x = 1200 * Math.cos( timer * 50 );
-    // pointLight.position.z = 1200 * Math.sin( timer * 50);
+    // pointLight.position.z = 1200 * Math.cos( timer * 50 );
+    pointLight.position.y = 5200 * Math.sin( timer * 20);
 
 
     renderer.render( scene, camera );
