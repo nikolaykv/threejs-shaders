@@ -27,7 +27,7 @@ function init() {
 
     //
 
-    const r = "textures/cube/Park3Med/";
+    const r = "textures/map/";
 
     const urls = [
         r + "px.jpg", r + "nx.jpg",
