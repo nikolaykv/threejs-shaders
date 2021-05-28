@@ -8,6 +8,8 @@ let container, stats;
 let camera, scene, renderer;
 
 let pointLight;
+let pointLight2;
+let pointLight3;
 
 let mouseX = 0, mouseY = 0;
 
@@ -45,12 +47,25 @@ function init() {
 
     // LIGHTS
 
-    const ambient = new THREE.AmbientLight( 0xffffff );
-    scene.add( ambient );
+    const ambient = new THREE.AmbientLight( 0xffffff , 1);
+    // scene.add( ambient );
 
-    pointLight = new THREE.PointLight( 0xff66ff, 1 );
-    pointLight.position.y = 600
+    pointLight = new THREE.PointLight( 0xffddff, 10 );
+    pointLight.position.y = 2000
+    pointLight.position.z = -1200
     scene.add( pointLight );
+
+    pointLight2 = new THREE.PointLight( 0xffddff, 10 );
+    pointLight2.position.y = -2000
+    pointLight2.position.z = -1200
+    scene.add( pointLight2 );
+
+
+    pointLight3 = new THREE.PointLight( 0x009900, 8 );
+    pointLight3.position.y = 0
+    pointLight3.position.z = 1500
+    scene.add( pointLight3 );
+
 
     // light representation
 
@@ -70,10 +85,10 @@ function init() {
 
     const gemBackMaterial = new THREE.MeshPhysicalMaterial( {
         map: null,
-        color: 0x0000ff,
-        metalness: 1,
-        roughness: 0,
-        opacity: 0.5,
+        color: 0x444444,
+        metalness: .5,
+        roughness: .5,
+        opacity: 0.1,
         side: THREE.BackSide,
         transparent: true,
         envMapIntensity: 5,
@@ -83,10 +98,10 @@ function init() {
 
     const gemFrontMaterial = new THREE.MeshPhysicalMaterial( {
         map: null,
-        color: 0x0000ff,
-        metalness: 0,
-        roughness: 0,
-        opacity: 0.25,
+        color: 0x444444,
+        metalness: .5,
+        roughness: .5,
+        opacity: 0.1,
         side: THREE.FrontSide,
         transparent: true,
         envMapIntensity: 10,
@@ -206,8 +221,8 @@ function render() {
 
     camera.lookAt( scene.position );
 
-    pointLight.position.x = 2000 * Math.cos( timer * 20 );
-    pointLight.position.z = 2000 * Math.sin( timer * 20);
+    // pointLight.position.x = 1200 * Math.cos( timer * 50 );
+    // pointLight.position.z = 1200 * Math.sin( timer * 50);
 
 
     renderer.render( scene, camera );
