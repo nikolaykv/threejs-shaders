@@ -14,6 +14,8 @@ let mouseX = 0, mouseY = 0;
 let windowHalfX = window.innerWidth / 2;
 let windowHalfY = window.innerHeight / 2;
 
+const objects = []
+
 init();
 animate();
 
@@ -46,7 +48,7 @@ function init() {
     const ambient = new THREE.AmbientLight( 0xffffff );
     scene.add( ambient );
 
-    pointLight = new THREE.PointLight( 0xff66ff, 3 );
+    pointLight = new THREE.PointLight( 0xff66ff, 1 );
     pointLight.position.y = 600
     scene.add( pointLight );
 
@@ -60,11 +62,37 @@ function init() {
 
     // material samples
 
-    const cubeMaterial = new THREE.MeshPhongMaterial( { color: 0xccddff, envMap: textureCube, refractionRatio: 0.98, reflectivity: 0.9 } );
+    const cubeMaterial = new THREE.MeshPhysicalMaterial( { color: 0x111111, envMap: textureCube, refractionRatio: 1.9, reflectivity: 0.5 } );
     // const cubeMaterial2 = new THREE.MeshPhongMaterial( { color: 0xccfffd, envMap: textureCube, refractionRatio: 0.985 } );
     // const cubeMaterial1 = new THREE.MeshPhongMaterial( { color: 0xffffff, envMap: textureCube, refractionRatio: 0.98 } );
 
     //
+
+    const gemBackMaterial = new THREE.MeshPhysicalMaterial( {
+        map: null,
+        color: 0x0000ff,
+        metalness: 1,
+        roughness: 0,
+        opacity: 0.5,
+        side: THREE.BackSide,
+        transparent: true,
+        envMapIntensity: 5,
+        premultipliedAlpha: true
+        // TODO: Add custom blend mode that modulates background color by this materials color.
+    } );
+
+    const gemFrontMaterial = new THREE.MeshPhysicalMaterial( {
+        map: null,
+        color: 0x0000ff,
+        metalness: 0,
+        roughness: 0,
+        opacity: 0.25,
+        side: THREE.FrontSide,
+        transparent: true,
+        envMapIntensity: 10,
+        premultipliedAlpha: true
+    } );
+
 
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio( window.devicePixelRatio );
@@ -81,10 +109,35 @@ function init() {
     // } );
 
     const loader = new OBJLoader();
-    loader.load( 'models/prism2.obj', function ( obj ) {
-        console.log(obj.children[0].geometry)
+    loader.load( 'models/prism2.obj', function ( object ) {
+        // console.log(obj.children[0].geometry)
 
-        createScene( obj.children[0].geometry, cubeMaterial );
+        object.traverse( function ( child ) {
+
+            if ( child instanceof THREE.Mesh ) {
+
+                child.material = gemBackMaterial;
+                const second = child.clone();
+                second.material = gemFrontMaterial;
+
+                const s = 20.5;
+                second.scale.x = second.scale.y = second.scale.z = s;
+                child.scale.x = child.scale.y = child.scale.z = s;
+
+                const parent = new THREE.Group();
+                parent.add( second );
+                parent.add( child );
+                scene.add( parent );
+
+
+
+                objects.push( parent );
+
+            }
+
+        } );
+
+        // createScene( obj.children[0].geometry, cubeMaterial );
 
     }, function (e) {
         console.log(e);
