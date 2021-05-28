@@ -2,6 +2,7 @@ import * as THREE from './three/three.module.js';
 
 
 import { OBJLoader  } from './three/OBJLoader.js';
+import { GUI } from './three/dat.gui.module.js';
 
 let container, stats;
 
@@ -24,12 +25,8 @@ animate();
 function init() {
 
     container = document.getElementById( 'canvas' );
-
-
     camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 1, 100000 );
     camera.position.z = - 4000;
-
-    //
 
     const r = "textures/map/";
 
@@ -46,7 +43,6 @@ function init() {
     // scene.background = textureCube;
 
     // LIGHTS
-
     const ambient = new THREE.AmbientLight( 0xffffff , 1);
     // scene.add( ambient );
 
@@ -68,7 +64,6 @@ function init() {
 
 
     // light representation
-
     const sphere = new THREE.SphereGeometry( 100, 16, 8 );
 
     const mesh = new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: 0xffffff } ) );
@@ -76,7 +71,6 @@ function init() {
     pointLight.add( mesh );
 
     // material samples
-
     const cubeMaterial = new THREE.MeshPhysicalMaterial( { color: 0x111111, envMap: textureCube, refractionRatio: 1.9, reflectivity: 0.5 } );
     // const cubeMaterial2 = new THREE.MeshPhongMaterial( { color: 0xccfffd, envMap: textureCube, refractionRatio: 0.985 } );
     // const cubeMaterial1 = new THREE.MeshPhongMaterial( { color: 0xffffff, envMap: textureCube, refractionRatio: 0.98 } );
@@ -108,13 +102,10 @@ function init() {
         premultipliedAlpha: true
     } );
 
-
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
     container.appendChild( renderer.domElement );
-
-
 
     // const loader = new PLYLoader();
     // loader.load( 'models/ply/binary/Lucy100k.ply', function ( geometry ) {
@@ -144,10 +135,7 @@ function init() {
                 parent.add( child );
                 scene.add( parent );
 
-
-
                 objects.push( parent );
-
             }
 
         } );
@@ -160,14 +148,31 @@ function init() {
         console.log(e);
     } );
 
+    const gui = new GUI();
+
+    const guiLight1 = gui.addFolder('Light 1');
+    const guiLight2 = gui.addFolder('Light 2');
+    const guiLight3 = gui.addFolder('Light 3');
+
+    guiLight1.add(pointLight.position, 'x', 0, 6000)
+    guiLight1.add(pointLight.position, 'y', 0, 6000)
+    guiLight1.add(pointLight.position, 'z', 0, 6000)
+    guiLight1.add(pointLight, 'intensity', 0, 100)
+
+    guiLight2.add(pointLight2.position, 'x', 0, 6000)
+    guiLight2.add(pointLight2.position, 'y', 0, 6000)
+    guiLight2.add(pointLight2.position, 'z', 0, 6000)
+    guiLight2.add(pointLight2, 'intensity', 0, 100)
+
+    guiLight3.add(pointLight3.position, 'x', 0, 6000)
+    guiLight3.add(pointLight3.position, 'y', 0, 6000)
+    guiLight3.add(pointLight3.position, 'z', 0, 6000)
+    guiLight3.add(pointLight3, 'intensity', 0, 100)
 
 
     document.addEventListener( 'mousemove', onDocumentMouseMove );
-
     //
-
     window.addEventListener( 'resize', onWindowResize );
-
 }
 
 function onWindowResize() {
