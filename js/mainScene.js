@@ -43,7 +43,7 @@ function init() {
     textureCube.mapping = THREE.CubeRefractionMapping;
 
     scene = new THREE.Scene();
-    scene.background = textureCube;
+    // scene.background = textureCube;
 
     // LIGHTS
 
@@ -61,9 +61,9 @@ function init() {
     scene.add( pointLight2 );
 
 
-    pointLight3 = new THREE.PointLight( 0x009900, 8 );
+    pointLight3 = new THREE.PointLight( 0x009900, 15 );
     pointLight3.position.y = 0
-    pointLight3.position.z = 1500
+    pointLight3.position.z = 2500
     scene.add( pointLight3 );
 
 
