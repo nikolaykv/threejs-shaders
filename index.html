@@ -1,28 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>webGl learning</title>
+    <link rel="stylesheet" href="./css/kvasov.css"/>
 </head>
 <body>
+<script src="./js/three/kvasov/three.js"></script>
 
-<style>
-    html, body {
-        padding: 0;
-        margin: 0;
-        background-color: #111;
+<script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        100
+    );
+
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    const material = new THREE.MeshBasicMaterial({color: "#d68f2f"});
+    const cube = new THREE.Mesh(new THREE.BoxGeometry(), material);
+    scene.add(cube);
+
+    camera.position.z = 5;
+
+    function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+
+
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+
+        if (camera.position.z > 2) {
+            camera.position.z -= 0.01;
+        }
+
     }
-    #canvas {
-        width: 100vw;
-        height: 100vh;
-        background-color: #111;
-    }
-</style>
 
-<div id="canvas"></div>
+    animate();
 
-<script src="js/mainScene.js" type="module" defer></script>
-
+</script>
 </body>
 </html>
