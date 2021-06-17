@@ -9,42 +9,28 @@
 </head>
 <body>
 <script src="./js/three/kvasov/three.js"></script>
+<script src="./js/three/kvasov/game.js"></script>
 
 <script>
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-        75,
-        window.innerWidth / window.innerHeight,
-        0.1,
-        100
-    );
+    const SPEED_CAMERA = 0.5;
+    game.init();
 
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
-
-    const material = new THREE.MeshBasicMaterial({color: "#d68f2f"});
-    const cube = new THREE.Mesh(new THREE.BoxGeometry(), material);
-    scene.add(cube);
-
-    camera.position.z = 5;
-
-    function animate() {
-        requestAnimationFrame(animate);
-        renderer.render(scene, camera);
+    game.addCube({
+        'position': game.vector(0, 1, 0)
+    });
 
 
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
-
-        if (camera.position.z > 2) {
-            camera.position.z -= 0.01;
+    game.on('keydown', (keys) => {
+        if (keys.KeyW) {
+            game.getCamera().position.z -= SPEED_CAMERA;
+        } else if (keys.KeyS) {
+            game.getCamera().position.z += SPEED_CAMERA;
+        } else if (keys.KeyA) {
+            game.getCamera().position.x -= SPEED_CAMERA;
+        } else if (keys.KeyD) {
+            game.getCamera().position.x += SPEED_CAMERA;
         }
-
-    }
-
-    animate();
-
+    });
 </script>
 </body>
 </html>

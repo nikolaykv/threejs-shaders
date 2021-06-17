@@ -192,4 +192,5 @@ fabric.properties
 
 
 # kvasov
-.vscode
+.idea
+package-lock.json
