@@ -1,5 +1,5 @@
 # Three.js Starter
-Простая 3D модель пончика. 
+Простая 3D [модель пончика](https://nikolaykv.github.io/three-js-example/dist/). 
 
 ## Установка
 Скачай [Node.js](https://nodejs.org/en/download/).
