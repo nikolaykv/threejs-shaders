@@ -1,8 +1,8 @@
 import './style.css'
+import params from './params.json';
 import * as THREE from 'three'
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'dat.gui'
-
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
 import donut from '../donut.glb'
 
@@ -17,10 +17,27 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 const scene = new THREE.Scene()
 
+// AxesHelper
+const axesHelper = new THREE.AxesHelper(params.axesHelper.size);
+scene.add(axesHelper);
+
 // Lights
-const light = new THREE.PointLight(0x404040, 3);
-light.position.set(3, 3, 5);
-scene.add(light)
+const lightOne = new THREE.PointLight(params.lightColor, params.lightIntensity);
+lightOne.position.set(
+    params.lightOne.x,
+    params.lightOne.y,
+    params.lightOne.z
+);
+scene.add(lightOne);
+
+const lightTwo = new THREE.PointLight(params.lightColor, params.lightIntensity);
+lightTwo.position.set(
+    params.lightTwo.x,
+    params.lightTwo.y,
+    params.lightTwo.z
+);
+scene.add(lightTwo);
+
 
 /**
  * Sizes
@@ -30,7 +47,7 @@ const sizes = {
     height: window.innerHeight
 }
 
-window.addEventListener('resize', () => {
+window.addEventListener('resize', function () {
     // Update sizes
     sizes.width = window.innerWidth
     sizes.height = window.innerHeight
@@ -47,11 +64,20 @@ window.addEventListener('resize', () => {
 /**
  * Camera
  */
-const camera = new THREE.PerspectiveCamera(15, sizes.width / sizes.height, 0.1, 100)
-camera.position.x = 1
-camera.position.y = 1
-camera.position.z = 1
-scene.add(camera)
+const camera = new THREE.PerspectiveCamera(
+    params.perspectiveCamera.fov,
+    sizes.width / sizes.height,
+    params.perspectiveCamera.near,
+    params.perspectiveCamera.far);
+
+camera.position.set(
+    params.perspectiveCamera.x,
+    params.perspectiveCamera.y,
+    params.perspectiveCamera.z
+);
+
+const cameraHelper = new THREE.CameraHelper(camera);
+scene.add(cameraHelper);
 
 // Controls
 const controls = new OrbitControls(camera, canvas)
@@ -70,6 +96,11 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 loader.load(
     donut,
     function (donutObj) {
+        donutObj.scene.children[0].position.set(
+            params.meshPosition.x,
+            params.meshPosition.y,
+            params.meshPosition.z
+        );
         scene.add(donutObj.scene);
     },
     function (xhr) {
@@ -83,7 +114,6 @@ loader.load(
 /**
  * Animate
  */
-
 const animate = () => {
     controls.update()
 
