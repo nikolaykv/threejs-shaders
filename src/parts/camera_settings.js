@@ -1,21 +1,24 @@
 import * as THREE from "three";
 import params from "../params.json";
-import {SIZES} from "./other_settings";
+import {sizes} from "./other_settings";
+
 
 /**
  * Настройка камеры
  *
  * @type {PerspectiveCamera}
  */
-export const CAMERA = new THREE.PerspectiveCamera(
+let camera = new THREE.PerspectiveCamera(
     params.perspectiveCamera.fov,
-    SIZES.width / SIZES.height,
+    sizes.width / sizes.height,
     params.perspectiveCamera.near,
     params.perspectiveCamera.far
 );
 
-CAMERA.position.set(
+camera.position.set(
     params.perspectiveCamera.x,
     params.perspectiveCamera.y,
     params.perspectiveCamera.z
 );
+
+export {camera};

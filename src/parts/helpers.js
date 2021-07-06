@@ -1,5 +1,5 @@
 import params from '../params.json';
-import {CAMERA} from "./camera_settings";
+import {camera} from "./camera_settings";
 import * as THREE from 'three';
 
 /**
@@ -14,4 +14,4 @@ export const AXES_HELPER = new THREE.AxesHelper(params.axesHelper.size);
  *
  * @type {CameraHelper}
  */
-export const CAMERA_HELPER = new THREE.CameraHelper(CAMERA);
+export const CAMERA_HELPER = new THREE.CameraHelper(camera);

@@ -9,7 +9,7 @@
     "y": -3,
     "z": -5
   },
-  "lightColor": "0x404040",
+  "lightColor": "white",
   "lightIntensity": 1,
   "perspectiveCamera": {
     "fov": 10,

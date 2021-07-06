@@ -9,21 +9,25 @@ import * as THREE from 'three';
  */
 import {screenResize, donutGltfLoader, animateScene} from "./parts/functions";
 import {AXES_HELPER, CAMERA_HELPER} from "./parts/helpers";
-import {LIGHT_ONE, LIGHT_TWO} from "./parts/light_settings";
-import {SIZES, CANVAS} from "./parts/other_settings";
-import {CAMERA} from "./parts/camera_settings";
+import {lightOne, lightTwo} from "./parts/light_settings";
+import {sizes, CANVAS} from "./parts/other_settings";
+import {camera} from "./parts/camera_settings";
 
 /**
  * Пользовательские файлы и параметры
  */
 import './style.css';
 
-export const SCENE = new THREE.Scene();
+// Создать сцену
+let scene = new THREE.Scene();
 
-SCENE.add(AXES_HELPER);
-SCENE.add(LIGHT_ONE);
-SCENE.add(LIGHT_TWO);
-SCENE.add(CAMERA_HELPER);
+// Добавить все вспомогательные оси
+scene.add(AXES_HELPER);
+scene.add(CAMERA_HELPER);
+
+// Добавить в сцену свет
+scene.add(lightOne);
+scene.add(lightTwo);
 
 /**
  * Логика изменения холста
@@ -35,8 +39,8 @@ screenResize();
 /**
  * Использование возможностей OrbitControls
  */
-export const CONTROLS = new OrbitControls(CAMERA, CANVAS)
-CONTROLS.enableDamping = true;
+let controls = new OrbitControls(camera, CANVAS)
+controls.enableDamping = true;
 
 /**
  *  Загрузка 3D объекта и установка его позиции
@@ -46,15 +50,17 @@ donutGltfLoader();
 /**
  * Renderer
  */
-export const RENDER = new THREE.WebGLRenderer({
+let render = new THREE.WebGLRenderer({
     canvas: CANVAS
 });
 
-RENDER.setSize(SIZES.width, SIZES.height)
-RENDER.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+render.setSize(sizes.width, sizes.height)
+render.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
 
 /**
  * Анимация сцены
  */
 animateScene();
+
+export {scene, render, controls};

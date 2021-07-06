@@ -3,7 +3,7 @@
  *
  * @type {{width: number, height: number}}
  */
-export const SIZES = {
+let sizes = {
     width: window.innerWidth,
     height: window.innerHeight
 };
@@ -11,4 +11,6 @@ export const SIZES = {
 /**
  * @type {Element}
  */
-export const CANVAS = document.querySelector('canvas.webgl');
+const CANVAS = document.querySelector('canvas.webgl');
+
+export {sizes, CANVAS};

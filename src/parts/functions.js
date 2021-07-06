@@ -1,8 +1,8 @@
-import {SIZES} from "./other_settings";
-import {CAMERA} from "./camera_settings";
+import {sizes} from "./other_settings";
+import {camera} from "./camera_settings";
 import donut from "../../donut.glb";
 import params from "../params.json";
-import {CONTROLS, SCENE, RENDER} from "../script";
+import {controls, scene, render} from "../script";
 import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
 
 /**
@@ -13,16 +13,16 @@ import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
 function screenResize() {
     window.addEventListener('resize', function () {
         // Update sizes
-        SIZES.width = window.innerWidth;
-        SIZES.height = window.innerHeight;
+        sizes.width = window.innerWidth;
+        sizes.height = window.innerHeight;
 
         // Update camera
-        CAMERA.aspect = SIZES.width / SIZES.height;
-        CAMERA.updateProjectionMatrix();
+        camera.aspect = sizes.width / sizes.height;
+        camera.updateProjectionMatrix();
 
         // Update renderer
-        renderer.setSize(SIZES.width, SIZES.height);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        render.setSize(sizes.width, sizes.height);
+        render.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     });
 }
 
@@ -40,14 +40,15 @@ function donutGltfLoader() {
                 params.meshPosition.y,
                 params.meshPosition.z
             );
-            SCENE.add(donutObj.scene);
+            scene.add(donutObj.scene);
         },
-        function (xhr) {
+        // Отладка
+        /*function (xhr) {
             console.log((xhr.loaded / xhr.total * 100) + '% загружено');
         },
         function (error) {
             console.log('Ошибка ' + error);
-        }
+        }*/
     );
 }
 
@@ -55,9 +56,9 @@ function donutGltfLoader() {
  * Анимация сцены
  */
 function animateScene() {
-    CONTROLS.update()
+    controls.update()
 
-    RENDER.render(SCENE, CAMERA)
+    render.render(scene, camera)
     window.requestAnimationFrame(animateScene)
 }
 
