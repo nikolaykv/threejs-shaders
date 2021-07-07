@@ -40,7 +40,8 @@ function donutGltfLoader() {
                 params.meshPosition.y,
                 params.meshPosition.z
             );
-            scene.add(donutObj.scene);
+            scene.add(donutObj.scenes[0]);
+
         },
         // Отладка
         /*function (xhr) {

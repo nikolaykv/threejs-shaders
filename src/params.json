@@ -1,17 +1,26 @@
 {
   "lightOne": {
+    "comment": "Это первый точечный свет, который смотрит на пончик",
     "x": 3,
     "y": 3,
     "z": 5
   },
   "lightTwo": {
+    "comment": "Это второй точечный свет, который находится прямо напротив первого источника света",
     "x": -3,
     "y": -3,
     "z": -5
   },
-  "lightColor": "white",
-  "lightIntensity": 1,
+  "lightColor": {
+    "comment": "Цвет обоих точечных источников света",
+    "value": "white"
+  },
+  "lightIntensity": {
+    "comment": "Интенсивность обоих точечных источников света",
+    "value": 1
+  },
   "perspectiveCamera": {
+    "comment": "Настройки камеры.",
     "fov": 10,
     "near": 0.1,
     "far": 100,
@@ -20,11 +29,31 @@
     "z": 1
   },
   "meshPosition": {
+    "comment": "Позиция 3D пончика",
     "x": 0,
     "y": 0.025,
     "z": 0
   },
   "axesHelper": {
-    "size": 5
+    "comment": "Толщина осей x,y,z и настройки TextGeometry их меток",
+    "size": 5,
+    "textSize": 0.015,
+    "textHeight": 0.001,
+    "curveSegments": 12,
+    "x": {
+      "label": "x",
+      "position": 0.3,
+      "color": "red"
+    },
+    "y": {
+      "label": "y",
+      "position": 0.15,
+      "color": "green"
+    },
+    "z": {
+      "label": "z",
+      "position": 0.3,
+      "color": "blue"
+    }
   }
 }

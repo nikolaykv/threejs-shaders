@@ -2,13 +2,13 @@ import * as THREE from "three";
 import params from "../params.json";
 
 let lightOne = new THREE.PointLight(
-    params.lightColor,
-    params.lightIntensity
+    params.lightColor.value,
+    params.lightIntensity.value
 );
 
 let lightTwo = new THREE.PointLight(
-    params.lightColor,
-    params.lightIntensity
+    params.lightColor.value,
+    params.lightIntensity.value
 );
 
 lightOne.position.set(

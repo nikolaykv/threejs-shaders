@@ -8,10 +8,11 @@ import * as THREE from 'three';
  * Настройки из модулей
  */
 import {screenResize, donutGltfLoader, animateScene} from "./parts/functions";
-import {AXES_HELPER, CAMERA_HELPER} from "./parts/helpers";
+import {AXES_HELPER, CAMERA_HELPER, x, y, z} from "./parts/helpers";
 import {lightOne, lightTwo} from "./parts/light_settings";
 import {sizes, CANVAS} from "./parts/other_settings";
 import {camera} from "./parts/camera_settings";
+import params from "./params.json";
 
 /**
  * Пользовательские файлы и параметры
@@ -24,6 +25,14 @@ let scene = new THREE.Scene();
 // Добавить все вспомогательные оси
 scene.add(AXES_HELPER);
 scene.add(CAMERA_HELPER);
+
+// Добавить метки осей в сцену и задать им расположение
+x.position.x = params.axesHelper.x.position;
+y.position.y = params.axesHelper.y.position;
+z.position.z = params.axesHelper.z.position;
+scene.add(x);
+scene.add(y);
+scene.add(z);
 
 // Добавить в сцену свет
 scene.add(lightOne);
