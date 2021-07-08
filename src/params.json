@@ -21,8 +21,8 @@
   },
   "perspectiveCamera": {
     "comment": "Настройки камеры.",
-    "fov": 35,
-    "near": 0.1,
+    "fov": 10,
+    "near": 0.08,
     "far": 100,
     "x": 0.800,
     "y": 0.700,
@@ -31,7 +31,7 @@
   "meshPosition": {
     "comment": "Позиция 3D пончика",
     "x": 0,
-    "y": 0.02799,
+    "y": 0.0289,
     "z": 0
   },
   "axesHelper": {
@@ -40,18 +40,15 @@
     "textSize": 0.03,
     "textHeight": 0.0001,
     "curveSegments": 12,
-    "position": 0.55,
+    "color": "white",
     "x": {
-      "label": "x",
-      "color": "red"
+      "label": "x"
     },
     "y": {
-      "label": "y",
-      "color": "green"
+      "label": "y"
     },
     "z": {
-      "label": "z",
-      "color": "blue"
+      "label": "z"
     }
   },
   "gridHelper": {

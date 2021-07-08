@@ -8,7 +8,7 @@ import * as THREE from 'three';
  * Настройки из модулей
  */
 import {
-    zeroCoordinates,
+    zeroPoint,
     pointOneX,
     pointTwoX,
     pointThreeX,
@@ -34,7 +34,6 @@ import {lightOne, lightTwo} from "./parts/light_settings";
 import {sizes, CANVAS} from "./parts/other_settings";
 import {camera} from "./parts/camera_settings";
 import {CUBE} from "./objects/cube";
-import params from "./params.json";
 
 /**
  * Пользовательские файлы и параметры
@@ -50,43 +49,44 @@ const GROUP = new THREE.Group();
 // Добавить все вспомогательные оси и сетку
 GROUP.add(
     AXES_HELPER,
-    CAMERA_HELPER,
+    // CAMERA_HELPER, // Измени чтобы задействовать хелпер камеры
     GRID_HELPER
 );
 
+console.log(AXES_HELPER.geometry.attributes.position.getX(1))
+
 // Добавить метки осей в группу и задать им расположение
-x.position.x = params.axesHelper.position;
-y.position.y = params.axesHelper.position;
-z.position.z = params.axesHelper.position;
+x.position.set(0.55, 0, 0);
+y.position.set(-0.01, 0.55,0);
+z.position.set(-0.01, 0, 0.55);
+
 GROUP.add(x, y, z);
 
-
 // Координаты на осях
-zeroCoordinates.position.x = -0.002;
-zeroCoordinates.position.y = 0;
-zeroCoordinates.position.z = 0;
+zeroPoint.position.set(-0.004, 0, 0);
 
-pointOneX.position.x = 0.1;
-pointTwoX.position.x = 0.2;
-pointThreeX.position.x = 0.3;
-pointFourX.position.x = 0.4;
-pointFiveX.position.x = 0.5;
+pointOneX.position.set(0.1, 0, 0);
+pointTwoX.position.set(0.2, 0, 0);
+pointThreeX.position.set(0.3, 0, 0);
+pointFourX.position.set(0.4, 0, 0);
+pointFiveX.position.set(0.5, 0, 0);
 
-pointOneY.position.y = 0.1;
-pointTwoY.position.y = 0.2;
-pointThreeY.position.y = 0.3;
-pointFourY.position.y = 0.4;
-pointFiveY.position.y = 0.5;
+pointOneY.position.set(-0.01, 0.1, 0);
+pointTwoY.position.set(-0.01, 0.2, 0);
+pointThreeY.position.set(-0.01, 0.3, 0);
+pointFourY.position.set(-0.01, 0.4, 0);
+pointFiveY.position.set(-0.01, 0.5, 0);
 
-pointOneZ.position.z = 0.1;
-pointTwoZ.position.z = 0.2;
-pointThreeZ.position.z = 0.3;
-pointFourZ.position.z = 0.4;
-pointFiveZ.position.z = 0.4;
+pointOneZ.position.set(-0.01, 0, 0.1);
+pointTwoZ.position.set(-0.01, 0, 0.2);
+pointThreeZ.position.set(-0.01, 0, 0.3);
+pointFourZ.position.set(-0.01, 0, 0.4);
+pointFiveZ.position.set(-0.01, 0, 0.5);
+
 
 
 GROUP.add(
-    zeroCoordinates,
+    zeroPoint,
     pointOneX,
     pointTwoX,
     pointThreeX,

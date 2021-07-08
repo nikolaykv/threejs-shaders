@@ -33,50 +33,36 @@ const GRID_HELPER = new THREE.GridHelper(
  * Метки направляющих x,y,z осей, реализованные
  * через TextGeometry
  */
-let axisLabelToX = new THREE.TextGeometry(params.axesHelper.x.label, {
-        size: params.axesHelper.textSize,
-        height: params.axesHelper.textHeight,
-        curveSegments: params.axesHelper.curveSegments,
-        font: HELVETIKER_REGULAR_FONT,
-        style: "normal"
-    }),
-    axisLabelToY = new THREE.TextGeometry(params.axesHelper.y.label, {
-        size: params.axesHelper.textSize,
-        height: params.axesHelper.textHeight,
-        curveSegments: params.axesHelper.curveSegments,
-        font: HELVETIKER_REGULAR_FONT,
-        style: "normal"
-    }),
-    axisLabelToZ = new THREE.TextGeometry(params.axesHelper.z.label, {
-        size: params.axesHelper.textSize,
-        height: params.axesHelper.textHeight,
-        curveSegments: params.axesHelper.curveSegments,
-        font: HELVETIKER_REGULAR_FONT,
-        style: "normal"
-    });
 
-let x = new THREE.Mesh(
-    axisLabelToX,
-    new THREE.MeshBasicMaterial(
-        {
-            color: params.axesHelper.x.color
-        }
-    )),
+let
+    x = new THREE.Mesh(
+        new THREE.TextGeometry(params.axesHelper.x.label, {
+            size: params.axesHelper.textSize,
+            height: params.axesHelper.textHeight,
+            curveSegments: params.axesHelper.curveSegments,
+            font: HELVETIKER_REGULAR_FONT,
+            style: "normal"
+        }),
+        new THREE.MeshBasicMaterial({color: params.axesHelper.color})),
 
     y = new THREE.Mesh(
-        axisLabelToY,
-        new THREE.MeshBasicMaterial(
-            {
-                color: params.axesHelper.y.color
-            }
-        )),
+        new THREE.TextGeometry(params.axesHelper.y.label, {
+            size: params.axesHelper.textSize,
+            height: params.axesHelper.textHeight,
+            curveSegments: params.axesHelper.curveSegments,
+            font: HELVETIKER_REGULAR_FONT,
+            style: "normal"
+        }),
+        new THREE.MeshBasicMaterial({color: params.axesHelper.color})),
 
     z = new THREE.Mesh(
-        axisLabelToZ,
-        new THREE.MeshBasicMaterial(
-            {
-                color: params.axesHelper.z.color
-            }
-        ));
+        new THREE.TextGeometry(params.axesHelper.z.label, {
+            size: params.axesHelper.textSize,
+            height: params.axesHelper.textHeight,
+            curveSegments: params.axesHelper.curveSegments,
+            font: HELVETIKER_REGULAR_FONT,
+            style: "normal"
+        }),
+        new THREE.MeshBasicMaterial({color: params.axesHelper.color}));
 
 export {AXES_HELPER, CAMERA_HELPER, GRID_HELPER, x, y, z};

@@ -4,7 +4,7 @@ import {HELVETIKER_REGULAR_FONT} from "./other_settings";
 
 let
     // 0
-    zeroCoordinates = new THREE.Mesh(
+    zeroPoint = new THREE.Mesh(
         new THREE.TextGeometry("0", {
             size: params.axesCoordinates.size,
             height: params.axesHelper.textHeight,
@@ -12,12 +12,13 @@ let
             font: HELVETIKER_REGULAR_FONT,
             style: "normal"
         }),
-        new THREE.MeshBasicMaterial(
-            {color: params.axesCoordinates.color}
-        )
+        new THREE.MeshBasicMaterial({color: params.axesCoordinates.color})
     ),
 
-    // Ось x
+    /**
+     * Ocь X
+     * @type {Mesh}
+     */
 
     // 0.1
     pointOneX = new THREE.Mesh(
@@ -28,9 +29,7 @@ let
             font: HELVETIKER_REGULAR_FONT,
             style: "normal"
         }),
-        new THREE.MeshBasicMaterial(
-            {color: params.axesCoordinates.color}
-        )
+        new THREE.MeshBasicMaterial({color: params.axesCoordinates.color})
     ),
 
     // 0.2
@@ -42,9 +41,7 @@ let
             font: HELVETIKER_REGULAR_FONT,
             style: "normal"
         }),
-        new THREE.MeshBasicMaterial(
-            {color: params.axesCoordinates.color}
-        )
+        new THREE.MeshBasicMaterial({color: params.axesCoordinates.color})
     ),
 
     // 0.3
@@ -56,9 +53,7 @@ let
             font: HELVETIKER_REGULAR_FONT,
             style: "normal"
         }),
-        new THREE.MeshBasicMaterial(
-            {color: params.axesCoordinates.color}
-        )
+        new THREE.MeshBasicMaterial({color: params.axesCoordinates.color})
     ),
 
     // 0.4
@@ -70,9 +65,7 @@ let
             font: HELVETIKER_REGULAR_FONT,
             style: "normal"
         }),
-        new THREE.MeshBasicMaterial(
-            {color: params.axesCoordinates.color}
-        )
+        new THREE.MeshBasicMaterial({color: params.axesCoordinates.color})
     ),
 
     // 0.5
@@ -84,12 +77,13 @@ let
             font: HELVETIKER_REGULAR_FONT,
             style: "normal"
         }),
-        new THREE.MeshBasicMaterial(
-            {color: params.axesCoordinates.color}
-        )
+        new THREE.MeshBasicMaterial({color: params.axesCoordinates.color})
     ),
 
-    // Ось y
+    /**
+     * Ocь Y
+     * @type {Mesh}
+     */
 
     // 0.1
     pointOneY = new THREE.Mesh(
@@ -100,9 +94,7 @@ let
             font: HELVETIKER_REGULAR_FONT,
             style: "normal"
         }),
-        new THREE.MeshBasicMaterial(
-            {color: params.axesCoordinates.color}
-        )
+        new THREE.MeshBasicMaterial({color: params.axesCoordinates.color})
     ),
 
     // 0.2
@@ -114,9 +106,7 @@ let
             font: HELVETIKER_REGULAR_FONT,
             style: "normal"
         }),
-        new THREE.MeshBasicMaterial(
-            {color: params.axesCoordinates.color}
-        )
+        new THREE.MeshBasicMaterial({color: params.axesCoordinates.color})
     ),
 
     // 0.3
@@ -128,9 +118,7 @@ let
             font: HELVETIKER_REGULAR_FONT,
             style: "normal"
         }),
-        new THREE.MeshBasicMaterial(
-            {color: params.axesCoordinates.color}
-        )
+        new THREE.MeshBasicMaterial({color: params.axesCoordinates.color})
     ),
 
     // 0.4
@@ -142,9 +130,7 @@ let
             font: HELVETIKER_REGULAR_FONT,
             style: "normal"
         }),
-        new THREE.MeshBasicMaterial(
-            {color: params.axesCoordinates.color}
-        )
+        new THREE.MeshBasicMaterial({color: params.axesCoordinates.color})
     ),
 
     // 0.5
@@ -156,12 +142,13 @@ let
             font: HELVETIKER_REGULAR_FONT,
             style: "normal"
         }),
-        new THREE.MeshBasicMaterial(
-            {color: params.axesCoordinates.color}
-        )
+        new THREE.MeshBasicMaterial({color: params.axesCoordinates.color})
     ),
 
-    // Ось Z
+    /**
+     * Ocь Z
+     * @type {Mesh}
+     */
 
     // 0.1
     pointOneZ = new THREE.Mesh(
@@ -172,9 +159,7 @@ let
             font: HELVETIKER_REGULAR_FONT,
             style: "normal"
         }),
-        new THREE.MeshBasicMaterial(
-            {color: params.axesCoordinates.color}
-        )
+        new THREE.MeshBasicMaterial({color: params.axesCoordinates.color})
     ),
 
     // 0.2
@@ -186,9 +171,7 @@ let
             font: HELVETIKER_REGULAR_FONT,
             style: "normal"
         }),
-        new THREE.MeshBasicMaterial(
-            {color: params.axesCoordinates.color}
-        )
+        new THREE.MeshBasicMaterial({color: params.axesCoordinates.color})
     ),
 
     // 0.3
@@ -200,9 +183,7 @@ let
             font: HELVETIKER_REGULAR_FONT,
             style: "normal"
         }),
-        new THREE.MeshBasicMaterial(
-            {color: params.axesCoordinates.color}
-        )
+        new THREE.MeshBasicMaterial({color: params.axesCoordinates.color})
     ),
 
     // 0.4
@@ -214,9 +195,7 @@ let
             font: HELVETIKER_REGULAR_FONT,
             style: "normal"
         }),
-        new THREE.MeshBasicMaterial(
-            {color: params.axesCoordinates.color}
-        )
+        new THREE.MeshBasicMaterial({color: params.axesCoordinates.color})
     ),
 
     // 0.5
@@ -228,14 +207,12 @@ let
             font: HELVETIKER_REGULAR_FONT,
             style: "normal"
         }),
-        new THREE.MeshBasicMaterial(
-            {color: params.axesCoordinates.color}
-        )
+        new THREE.MeshBasicMaterial({color: params.axesCoordinates.color})
     );
 
 
 export {
-    zeroCoordinates,
+    zeroPoint,
     pointOneX,
     pointTwoX,
     pointThreeX,
