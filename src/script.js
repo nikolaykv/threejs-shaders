@@ -7,6 +7,16 @@ import * as THREE from 'three';
 /**
  * Настройки из модулей
  */
+import {
+    pointOneCoordinates,
+    pointZeroCoordinates,
+    pointTwoCoordinates,
+    pointThreeCoordinates,
+    pointFourCoordinates,
+    pointFiveCoordinates,
+    pointSixCoordinates
+} from "./parts/axes_coordinates";
+
 import {AXES_HELPER, CAMERA_HELPER, GRID_HELPER, x, y, z} from "./parts/helpers";
 import {screenResize, donutGltfLoader, animateScene} from "./parts/functions";
 import {lightOne, lightTwo} from "./parts/light_settings";
@@ -39,12 +49,32 @@ GROUP.add(x);
 GROUP.add(y);
 GROUP.add(z);
 
+// Координаты на осях
+pointZeroCoordinates.position.x = 0;
+pointOneCoordinates.position.x = 0.2;
+pointTwoCoordinates.position.x = 0.4;
+pointThreeCoordinates.position.x = 0.6;
+pointFourCoordinates.position.x = 0.8;
+pointFiveCoordinates.position.x = 1;
+pointSixCoordinates.position.x = 0.1;
+
+
+GROUP.add(pointOneCoordinates);
+GROUP.add(pointZeroCoordinates);
+GROUP.add(pointTwoCoordinates);
+GROUP.add(pointThreeCoordinates);
+GROUP.add(pointFourCoordinates);
+GROUP.add(pointFiveCoordinates);
+GROUP.add(pointSixCoordinates);
+
 // Добавить в группу свет
 GROUP.add(lightOne);
 GROUP.add(lightTwo);
 
 // Добавим ещё объект в группу
-GROUP.add(CUBE);
+//GROUP.add(CUBE);
+
+// Добавить всю сцену в группу
 scene.add(GROUP);
 
 

@@ -38,7 +38,7 @@
     "comment": "Толщина осей x,y,z и настройки TextGeometry их меток",
     "size": 15,
     "textSize": 0.015,
-    "textHeight": 0.001,
+    "textHeight": 0.0001,
     "curveSegments": 12,
     "x": {
       "label": "x",
@@ -57,11 +57,17 @@
     }
   },
   "gridHelper": {
+    "comment": "Настройки сетки, на которой располагаются объекты",
     "size": 0.5,
     "divisions": 50,
     "colors": {
       "one": "",
       "two": "#4fc2c2"
     }
+  },
+  "axesCoordinates": {
+    "comment": "Настройки геометрии и цвета текста координат на осях AxesHelper",
+    "size": 0.005,
+    "color": "white"
   }
 }
