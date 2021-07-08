@@ -1,5 +1,5 @@
 # Three.js Starter
-Простая 3D модель пончика. 
+Простая [3D модель пончика](https://nikolaykv.github.io/threejs-donut-3d-model/) 
 
 ## Установка
 Скачай [Node.js](https://nodejs.org/en/download/).
