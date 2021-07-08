@@ -53,8 +53,6 @@ GROUP.add(
     GRID_HELPER
 );
 
-console.log(AXES_HELPER.geometry.attributes.position.getX(1))
-
 // Добавить метки осей в группу и задать им расположение
 x.position.set(0.55, 0, 0);
 y.position.set(-0.01, 0.55,0);
