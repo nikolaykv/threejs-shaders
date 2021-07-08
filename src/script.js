@@ -7,11 +7,12 @@ import * as THREE from 'three';
 /**
  * Настройки из модулей
  */
+import {AXES_HELPER, CAMERA_HELPER, GRID_HELPER, x, y, z} from "./parts/helpers";
 import {screenResize, donutGltfLoader, animateScene} from "./parts/functions";
-import {AXES_HELPER, CAMERA_HELPER, x, y, z} from "./parts/helpers";
 import {lightOne, lightTwo} from "./parts/light_settings";
 import {sizes, CANVAS} from "./parts/other_settings";
 import {camera} from "./parts/camera_settings";
+import {CUBE} from "./objects/cube";
 import params from "./params.json";
 
 /**
@@ -22,21 +23,30 @@ import './style.css';
 // Создать сцену
 let scene = new THREE.Scene();
 
-// Добавить все вспомогательные оси
-scene.add(AXES_HELPER);
-scene.add(CAMERA_HELPER);
+// Сгруппировать элементы сцены
+const GROUP = new THREE.Group();
 
-// Добавить метки осей в сцену и задать им расположение
+// Добавить все вспомогательные оси и сетку
+GROUP.add(AXES_HELPER);
+GROUP.add(CAMERA_HELPER);
+GROUP.add(GRID_HELPER);
+
+// Добавить метки осей в группу и задать им расположение
 x.position.x = params.axesHelper.x.position;
 y.position.y = params.axesHelper.y.position;
 z.position.z = params.axesHelper.z.position;
-scene.add(x);
-scene.add(y);
-scene.add(z);
+GROUP.add(x);
+GROUP.add(y);
+GROUP.add(z);
 
-// Добавить в сцену свет
-scene.add(lightOne);
-scene.add(lightTwo);
+// Добавить в группу свет
+GROUP.add(lightOne);
+GROUP.add(lightTwo);
+
+// Добавим ещё объект в группу
+GROUP.add(CUBE);
+scene.add(GROUP);
+
 
 /**
  * Логика изменения холста
@@ -72,4 +82,4 @@ render.setPixelRatio(Math.min(window.devicePixelRatio, 2));
  */
 animateScene();
 
-export {scene, render, controls};
+export {scene, render, controls, GROUP};

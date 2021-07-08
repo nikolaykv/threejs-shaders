@@ -4,9 +4,8 @@ import params from "../params.json";
 let lightOne = new THREE.PointLight(
     params.lightColor.value,
     params.lightIntensity.value
-);
-
-let lightTwo = new THREE.PointLight(
+),
+    lightTwo = new THREE.PointLight(
     params.lightColor.value,
     params.lightIntensity.value
 );

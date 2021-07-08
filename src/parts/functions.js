@@ -2,7 +2,7 @@ import {sizes} from "./other_settings";
 import {camera} from "./camera_settings";
 import donut from "../../donut.glb";
 import params from "../params.json";
-import {controls, scene, render} from "../script";
+import {controls, scene, render, GROUP} from "../script";
 import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
 
 /**
@@ -40,7 +40,7 @@ function donutGltfLoader() {
                 params.meshPosition.y,
                 params.meshPosition.z
             );
-            scene.add(donutObj.scenes[0]);
+            GROUP.add(donutObj.scenes[0]);
 
         },
         // Отладка
@@ -57,10 +57,10 @@ function donutGltfLoader() {
  * Анимация сцены
  */
 function animateScene() {
-    controls.update()
+    controls.update();
 
-    render.render(scene, camera)
-    window.requestAnimationFrame(animateScene)
+    render.render(scene, camera);
+    window.requestAnimationFrame(animateScene);
 }
 
 export {screenResize, donutGltfLoader, animateScene};

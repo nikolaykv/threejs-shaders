@@ -24,19 +24,19 @@
     "fov": 10,
     "near": 0.1,
     "far": 100,
-    "x": 1,
-    "y": 1,
-    "z": 1
+    "x": 0.800,
+    "y": 0.700,
+    "z": 1.800
   },
   "meshPosition": {
     "comment": "Позиция 3D пончика",
     "x": 0,
-    "y": 0.025,
+    "y": 0.02799,
     "z": 0
   },
   "axesHelper": {
     "comment": "Толщина осей x,y,z и настройки TextGeometry их меток",
-    "size": 5,
+    "size": 15,
     "textSize": 0.015,
     "textHeight": 0.001,
     "curveSegments": 12,
@@ -54,6 +54,14 @@
       "label": "z",
       "position": 0.3,
       "color": "blue"
+    }
+  },
+  "gridHelper": {
+    "size": 0.5,
+    "divisions": 50,
+    "colors": {
+      "one": "",
+      "two": "#4fc2c2"
     }
   }
 }
