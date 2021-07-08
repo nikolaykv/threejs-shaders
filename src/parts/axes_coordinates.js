@@ -4,112 +4,230 @@ import {HELVETIKER_REGULAR_FONT} from "./other_settings";
 
 let
     // 0
-    zeroPoint = new THREE.TextGeometry("0", {
-        size: params.axesCoordinates.size,
-        height: params.axesHelper.textHeight,
-        curveSegments: params.axesHelper.curveSegments,
-        font: HELVETIKER_REGULAR_FONT,
-        style: "normal"
-    }),
+    zeroCoordinates = new THREE.Mesh(
+        new THREE.TextGeometry("0", {
+            size: params.axesCoordinates.size,
+            height: params.axesHelper.textHeight,
+            curveSegments: params.axesHelper.curveSegments,
+            font: HELVETIKER_REGULAR_FONT,
+            style: "normal"
+        }),
+        new THREE.MeshBasicMaterial(
+            {color: params.axesCoordinates.color}
+        )
+    ),
 
-    pointZeroCoordinates = new THREE.Mesh(
-        zeroPoint,
+    // Ось x
+
+    // 0.1
+    pointOneX = new THREE.Mesh(
+        new THREE.TextGeometry("0.1", {
+            size: params.axesCoordinates.size,
+            height: params.axesHelper.textHeight,
+            curveSegments: params.axesHelper.curveSegments,
+            font: HELVETIKER_REGULAR_FONT,
+            style: "normal"
+        }),
         new THREE.MeshBasicMaterial(
             {color: params.axesCoordinates.color}
         )
     ),
 
     // 0.2
-    pointOne = new THREE.TextGeometry("0.2", {
-        size: params.axesCoordinates.size,
-        height: params.axesHelper.textHeight,
-        curveSegments: params.axesHelper.curveSegments,
-        font: HELVETIKER_REGULAR_FONT,
-        style: "normal"
-    }),
+    pointTwoX = new THREE.Mesh(
+        new THREE.TextGeometry("0.2", {
+            size: params.axesCoordinates.size,
+            height: params.axesHelper.textHeight,
+            curveSegments: params.axesHelper.curveSegments,
+            font: HELVETIKER_REGULAR_FONT,
+            style: "normal"
+        }),
+        new THREE.MeshBasicMaterial(
+            {color: params.axesCoordinates.color}
+        )
+    ),
 
-    pointOneCoordinates = new THREE.Mesh(
-        pointOne,
+    // 0.3
+    pointThreeX = new THREE.Mesh(
+        new THREE.TextGeometry("0.3", {
+            size: params.axesCoordinates.size,
+            height: params.axesHelper.textHeight,
+            curveSegments: params.axesHelper.curveSegments,
+            font: HELVETIKER_REGULAR_FONT,
+            style: "normal"
+        }),
         new THREE.MeshBasicMaterial(
             {color: params.axesCoordinates.color}
         )
     ),
 
     // 0.4
-    pointTwo = new THREE.TextGeometry("0.4", {
-        size: params.axesCoordinates.size,
-        height: params.axesHelper.textHeight,
-        curveSegments: params.axesHelper.curveSegments,
-        font: HELVETIKER_REGULAR_FONT,
-        style: "normal"
-    }),
-
-    pointTwoCoordinates = new THREE.Mesh(
-        pointTwo,
+    pointFourX = new THREE.Mesh(
+        new THREE.TextGeometry("0.4", {
+            size: params.axesCoordinates.size,
+            height: params.axesHelper.textHeight,
+            curveSegments: params.axesHelper.curveSegments,
+            font: HELVETIKER_REGULAR_FONT,
+            style: "normal"
+        }),
         new THREE.MeshBasicMaterial(
             {color: params.axesCoordinates.color}
         )
     ),
 
-    // 0.6
-    pointThree = new THREE.TextGeometry("0.6", {
-        size: params.axesCoordinates.size,
-        height: params.axesHelper.textHeight,
-        curveSegments: params.axesHelper.curveSegments,
-        font: HELVETIKER_REGULAR_FONT,
-        style: "normal"
-    }),
-
-    pointThreeCoordinates = new THREE.Mesh(
-        pointThree,
+    // 0.5
+    pointFiveX = new THREE.Mesh(
+        new THREE.TextGeometry("0.5", {
+            size: params.axesCoordinates.size,
+            height: params.axesHelper.textHeight,
+            curveSegments: params.axesHelper.curveSegments,
+            font: HELVETIKER_REGULAR_FONT,
+            style: "normal"
+        }),
         new THREE.MeshBasicMaterial(
             {color: params.axesCoordinates.color}
         )
     ),
 
-    // 0.8
-    pointFour = new THREE.TextGeometry("0.8", {
-        size: params.axesCoordinates.size,
-        height: params.axesHelper.textHeight,
-        curveSegments: params.axesHelper.curveSegments,
-        font: HELVETIKER_REGULAR_FONT,
-        style: "normal"
-    }),
-
-    pointFourCoordinates = new THREE.Mesh(
-        pointFour,
-        new THREE.MeshBasicMaterial(
-            {color: params.axesCoordinates.color}
-        )
-    ),
-
-    // 1
-    pointFive = new THREE.TextGeometry("1", {
-        size: params.axesHelper.textSize,
-        height: params.axesHelper.textHeight,
-        curveSegments: params.axesHelper.curveSegments,
-        font: HELVETIKER_REGULAR_FONT,
-        style: "normal"
-    }),
-
-    pointFiveCoordinates = new THREE.Mesh(
-        pointFive,
-        new THREE.MeshBasicMaterial(
-            {color: params.axesCoordinates.color}
-        )
-    ),
+    // Ось y
 
     // 0.1
-    pointSix = new THREE.TextGeometry("0.1", {
-        size: params.axesCoordinates.size,
-        height: params.axesHelper.textHeight,
-        curveSegments: params.axesHelper.curveSegments,
-        font: HELVETIKER_REGULAR_FONT,
-        style: "normal"
-    }),
+    pointOneY = new THREE.Mesh(
+        new THREE.TextGeometry("0.1", {
+            size: params.axesCoordinates.size,
+            height: params.axesHelper.textHeight,
+            curveSegments: params.axesHelper.curveSegments,
+            font: HELVETIKER_REGULAR_FONT,
+            style: "normal"
+        }),
+        new THREE.MeshBasicMaterial(
+            {color: params.axesCoordinates.color}
+        )
+    ),
 
-    pointSixCoordinates = new THREE.Mesh(
-        pointSix,
+    // 0.2
+    pointTwoY = new THREE.Mesh(
+        new THREE.TextGeometry("0.2", {
+            size: params.axesCoordinates.size,
+            height: params.axesHelper.textHeight,
+            curveSegments: params.axesHelper.curveSegments,
+            font: HELVETIKER_REGULAR_FONT,
+            style: "normal"
+        }),
+        new THREE.MeshBasicMaterial(
+            {color: params.axesCoordinates.color}
+        )
+    ),
+
+    // 0.3
+    pointThreeY = new THREE.Mesh(
+        new THREE.TextGeometry("0.3", {
+            size: params.axesCoordinates.size,
+            height: params.axesHelper.textHeight,
+            curveSegments: params.axesHelper.curveSegments,
+            font: HELVETIKER_REGULAR_FONT,
+            style: "normal"
+        }),
+        new THREE.MeshBasicMaterial(
+            {color: params.axesCoordinates.color}
+        )
+    ),
+
+    // 0.4
+    pointFourY = new THREE.Mesh(
+        new THREE.TextGeometry("0.4", {
+            size: params.axesCoordinates.size,
+            height: params.axesHelper.textHeight,
+            curveSegments: params.axesHelper.curveSegments,
+            font: HELVETIKER_REGULAR_FONT,
+            style: "normal"
+        }),
+        new THREE.MeshBasicMaterial(
+            {color: params.axesCoordinates.color}
+        )
+    ),
+
+    // 0.5
+    pointFiveY = new THREE.Mesh(
+        new THREE.TextGeometry("0.5", {
+            size: params.axesCoordinates.size,
+            height: params.axesHelper.textHeight,
+            curveSegments: params.axesHelper.curveSegments,
+            font: HELVETIKER_REGULAR_FONT,
+            style: "normal"
+        }),
+        new THREE.MeshBasicMaterial(
+            {color: params.axesCoordinates.color}
+        )
+    ),
+
+    // Ось Z
+
+    // 0.1
+    pointOneZ = new THREE.Mesh(
+        new THREE.TextGeometry("0.1", {
+            size: params.axesCoordinates.size,
+            height: params.axesHelper.textHeight,
+            curveSegments: params.axesHelper.curveSegments,
+            font: HELVETIKER_REGULAR_FONT,
+            style: "normal"
+        }),
+        new THREE.MeshBasicMaterial(
+            {color: params.axesCoordinates.color}
+        )
+    ),
+
+    // 0.2
+    pointTwoZ = new THREE.Mesh(
+        new THREE.TextGeometry("0.2", {
+            size: params.axesCoordinates.size,
+            height: params.axesHelper.textHeight,
+            curveSegments: params.axesHelper.curveSegments,
+            font: HELVETIKER_REGULAR_FONT,
+            style: "normal"
+        }),
+        new THREE.MeshBasicMaterial(
+            {color: params.axesCoordinates.color}
+        )
+    ),
+
+    // 0.3
+    pointThreeZ = new THREE.Mesh(
+        new THREE.TextGeometry("0.3", {
+            size: params.axesCoordinates.size,
+            height: params.axesHelper.textHeight,
+            curveSegments: params.axesHelper.curveSegments,
+            font: HELVETIKER_REGULAR_FONT,
+            style: "normal"
+        }),
+        new THREE.MeshBasicMaterial(
+            {color: params.axesCoordinates.color}
+        )
+    ),
+
+    // 0.4
+    pointFourZ = new THREE.Mesh(
+        new THREE.TextGeometry("0.4", {
+            size: params.axesCoordinates.size,
+            height: params.axesHelper.textHeight,
+            curveSegments: params.axesHelper.curveSegments,
+            font: HELVETIKER_REGULAR_FONT,
+            style: "normal"
+        }),
+        new THREE.MeshBasicMaterial(
+            {color: params.axesCoordinates.color}
+        )
+    ),
+
+    // 0.5
+    pointFiveZ = new THREE.Mesh(
+        new THREE.TextGeometry("0.5", {
+            size: params.axesCoordinates.size,
+            height: params.axesHelper.textHeight,
+            curveSegments: params.axesHelper.curveSegments,
+            font: HELVETIKER_REGULAR_FONT,
+            style: "normal"
+        }),
         new THREE.MeshBasicMaterial(
             {color: params.axesCoordinates.color}
         )
@@ -117,11 +235,22 @@ let
 
 
 export {
-    pointOneCoordinates,
-    pointZeroCoordinates,
-    pointTwoCoordinates,
-    pointThreeCoordinates,
-    pointFourCoordinates,
-    pointFiveCoordinates,
-    pointSixCoordinates
+    zeroCoordinates,
+    pointOneX,
+    pointTwoX,
+    pointThreeX,
+    pointFourX,
+    pointFiveX,
+
+    pointOneY,
+    pointTwoY,
+    pointThreeY,
+    pointFourY,
+    pointFiveY,
+
+    pointOneZ,
+    pointTwoZ,
+    pointThreeZ,
+    pointFourZ,
+    pointFiveZ
 };

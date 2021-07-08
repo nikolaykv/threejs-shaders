@@ -21,7 +21,7 @@
   },
   "perspectiveCamera": {
     "comment": "Настройки камеры.",
-    "fov": 10,
+    "fov": 35,
     "near": 0.1,
     "far": 100,
     "x": 0.800,
@@ -36,29 +36,27 @@
   },
   "axesHelper": {
     "comment": "Толщина осей x,y,z и настройки TextGeometry их меток",
-    "size": 15,
-    "textSize": 0.015,
+    "size": 5,
+    "textSize": 0.03,
     "textHeight": 0.0001,
     "curveSegments": 12,
+    "position": 0.55,
     "x": {
       "label": "x",
-      "position": 0.3,
       "color": "red"
     },
     "y": {
       "label": "y",
-      "position": 0.15,
       "color": "green"
     },
     "z": {
       "label": "z",
-      "position": 0.3,
       "color": "blue"
     }
   },
   "gridHelper": {
     "comment": "Настройки сетки, на которой располагаются объекты",
-    "size": 0.5,
+    "size": 0.35,
     "divisions": 50,
     "colors": {
       "one": "",
@@ -67,7 +65,7 @@
   },
   "axesCoordinates": {
     "comment": "Настройки геометрии и цвета текста координат на осях AxesHelper",
-    "size": 0.005,
+    "size": 0.01,
     "color": "white"
   }
 }

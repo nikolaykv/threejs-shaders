@@ -12,7 +12,7 @@ let camera = new THREE.PerspectiveCamera(
     params.perspectiveCamera.fov,
     sizes.width / sizes.height,
     params.perspectiveCamera.near,
-    params.perspectiveCamera.far
+    params.perspectiveCamera.far,
 );
 
 camera.position.set(
@@ -20,5 +20,6 @@ camera.position.set(
     params.perspectiveCamera.y,
     params.perspectiveCamera.z
 );
+
 
 export {camera};

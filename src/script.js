@@ -8,13 +8,24 @@ import * as THREE from 'three';
  * Настройки из модулей
  */
 import {
-    pointOneCoordinates,
-    pointZeroCoordinates,
-    pointTwoCoordinates,
-    pointThreeCoordinates,
-    pointFourCoordinates,
-    pointFiveCoordinates,
-    pointSixCoordinates
+    zeroCoordinates,
+    pointOneX,
+    pointTwoX,
+    pointThreeX,
+    pointFourX,
+    pointFiveX,
+
+    pointOneY,
+    pointTwoY,
+    pointThreeY,
+    pointFourY,
+    pointFiveY,
+
+    pointOneZ,
+    pointTwoZ,
+    pointThreeZ,
+    pointFourZ,
+    pointFiveZ
 } from "./parts/axes_coordinates";
 
 import {AXES_HELPER, CAMERA_HELPER, GRID_HELPER, x, y, z} from "./parts/helpers";
@@ -37,42 +48,72 @@ let scene = new THREE.Scene();
 const GROUP = new THREE.Group();
 
 // Добавить все вспомогательные оси и сетку
-GROUP.add(AXES_HELPER);
-GROUP.add(CAMERA_HELPER);
-GROUP.add(GRID_HELPER);
+GROUP.add(
+    AXES_HELPER,
+    CAMERA_HELPER,
+    GRID_HELPER
+);
 
 // Добавить метки осей в группу и задать им расположение
-x.position.x = params.axesHelper.x.position;
-y.position.y = params.axesHelper.y.position;
-z.position.z = params.axesHelper.z.position;
-GROUP.add(x);
-GROUP.add(y);
-GROUP.add(z);
+x.position.x = params.axesHelper.position;
+y.position.y = params.axesHelper.position;
+z.position.z = params.axesHelper.position;
+GROUP.add(x, y, z);
+
 
 // Координаты на осях
-pointZeroCoordinates.position.x = 0;
-pointOneCoordinates.position.x = 0.2;
-pointTwoCoordinates.position.x = 0.4;
-pointThreeCoordinates.position.x = 0.6;
-pointFourCoordinates.position.x = 0.8;
-pointFiveCoordinates.position.x = 1;
-pointSixCoordinates.position.x = 0.1;
+zeroCoordinates.position.x = -0.002;
+zeroCoordinates.position.y = 0;
+zeroCoordinates.position.z = 0;
+
+pointOneX.position.x = 0.1;
+pointTwoX.position.x = 0.2;
+pointThreeX.position.x = 0.3;
+pointFourX.position.x = 0.4;
+pointFiveX.position.x = 0.5;
+
+pointOneY.position.y = 0.1;
+pointTwoY.position.y = 0.2;
+pointThreeY.position.y = 0.3;
+pointFourY.position.y = 0.4;
+pointFiveY.position.y = 0.5;
+
+pointOneZ.position.z = 0.1;
+pointTwoZ.position.z = 0.2;
+pointThreeZ.position.z = 0.3;
+pointFourZ.position.z = 0.4;
+pointFiveZ.position.z = 0.4;
 
 
-GROUP.add(pointOneCoordinates);
-GROUP.add(pointZeroCoordinates);
-GROUP.add(pointTwoCoordinates);
-GROUP.add(pointThreeCoordinates);
-GROUP.add(pointFourCoordinates);
-GROUP.add(pointFiveCoordinates);
-GROUP.add(pointSixCoordinates);
+GROUP.add(
+    zeroCoordinates,
+    pointOneX,
+    pointTwoX,
+    pointThreeX,
+    pointFourX,
+    pointFiveX,
+
+    pointOneY,
+    pointTwoY,
+    pointThreeY,
+    pointFourY,
+    pointFiveY,
+
+    pointOneZ,
+    pointTwoZ,
+    pointThreeZ,
+    pointFourZ,
+    pointFiveZ
+);
 
 // Добавить в группу свет
-GROUP.add(lightOne);
-GROUP.add(lightTwo);
+GROUP.add(
+    lightOne,
+    lightTwo
+);
 
 // Добавим ещё объект в группу
-//GROUP.add(CUBE);
+GROUP.add(CUBE);
 
 // Добавить всю сцену в группу
 scene.add(GROUP);
