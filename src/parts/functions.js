@@ -40,6 +40,9 @@ function donutGltfLoader() {
                 params.meshPosition.y,
                 params.meshPosition.z
             );
+
+            donutObj.scenes[0].name = 'blenderDonutScene';
+
             GROUP.add(donutObj.scenes[0]);
 
         },

@@ -42,9 +42,11 @@ import './style.css';
 
 // Создать сцену
 let scene = new THREE.Scene();
+scene.name = 'mainScene';
 
 // Сгруппировать элементы сцены
 const GROUP = new THREE.Group();
+GROUP.name = 'commonGroup';
 
 // Добавить все вспомогательные оси и сетку
 GROUP.add(
@@ -152,3 +154,9 @@ render.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 animateScene();
 
 export {scene, render, controls, GROUP};
+
+// Отладка через экспериментальное расширение Google Chrome
+if (typeof __THREE_DEVTOOLS__ !== 'undefined') {
+    __THREE_DEVTOOLS__.dispatchEvent(new CustomEvent('observe', { detail: scene }));
+    __THREE_DEVTOOLS__.dispatchEvent(new CustomEvent('observe', { detail: render }));
+}

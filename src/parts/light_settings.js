@@ -22,4 +22,7 @@ lightTwo.position.set(
     params.lightTwo.z
 );
 
+lightOne.name = 'pointLightOne';
+lightTwo.name = 'pointLightTwo';
+
 export {lightOne, lightTwo};

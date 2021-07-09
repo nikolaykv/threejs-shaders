@@ -9,6 +9,7 @@ import {HELVETIKER_REGULAR_FONT} from "./other_settings";
  * @type {AxesHelper}
  */
 const AXES_HELPER = new THREE.AxesHelper(params.axesHelper.size);
+AXES_HELPER.name = 'axesHelper';
 
 /**
  * Визуализировать оси камеры
@@ -28,6 +29,7 @@ const GRID_HELPER = new THREE.GridHelper(
     '',
     params.gridHelper.colors.two
 );
+GRID_HELPER.name = 'gridHelper';
 
 /**
  * Метки направляющих x,y,z осей, реализованные
@@ -64,5 +66,9 @@ let
             style: "normal"
         }),
         new THREE.MeshBasicMaterial({color: params.axesHelper.color}));
+
+x.name = 'axesLabelX';
+y.name = 'axesLabelY';
+z.name = 'axesLabelZ';
 
 export {AXES_HELPER, CAMERA_HELPER, GRID_HELPER, x, y, z};

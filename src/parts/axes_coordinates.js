@@ -14,13 +14,12 @@ let
         }),
         new THREE.MeshBasicMaterial({color: params.axesCoordinates.color})
     ),
-
     /**
      * Ocь X
      * @type {Mesh}
      */
 
-    // 0.1
+        // 0.1
     pointOneX = new THREE.Mesh(
         new THREE.TextGeometry("0.1", {
             size: params.axesCoordinates.size,
@@ -85,7 +84,7 @@ let
      * @type {Mesh}
      */
 
-    // 0.1
+        // 0.1
     pointOneY = new THREE.Mesh(
         new THREE.TextGeometry("0.1", {
             size: params.axesCoordinates.size,
@@ -150,7 +149,7 @@ let
      * @type {Mesh}
      */
 
-    // 0.1
+        // 0.1
     pointOneZ = new THREE.Mesh(
         new THREE.TextGeometry("0.1", {
             size: params.axesCoordinates.size,
@@ -210,6 +209,25 @@ let
         new THREE.MeshBasicMaterial({color: params.axesCoordinates.color})
     );
 
+zeroPoint.name = 'textGeometryZeroCoordinates';
+
+pointOneX.name = 'textGeometryPointOneAxisX';
+pointTwoX.name = 'textGeometryPointTwoAxisX';
+pointThreeX.name = 'textGeometryPointThreeAxisX';
+pointFourX.name = 'textGeometryPointFourAxisX';
+pointFiveX.name = 'textGeometryPointFiveAxisX';
+
+pointOneY.name = 'textGeometryPointOneAxisY';
+pointTwoY.name = 'textGeometryPointTwoAxisY';
+pointThreeY.name = 'textGeometryPointThreeAxisY';
+pointFourY.name = 'textGeometryPointFourAxisY';
+pointFiveY.name = 'textGeometryPointFiveAxisY';
+
+pointOneZ.name = 'textGeometryPointOneAxisZ';
+pointTwoZ.name = 'textGeometryPointTwoAxisZ';
+pointThreeZ.name = 'textGeometryPointThreeAxisZ';
+pointFourZ.name = 'textGeometryPointFourAxisZ';
+pointFiveZ.name = 'textGeometryPointFourAxisZ';
 
 export {
     zeroPoint,

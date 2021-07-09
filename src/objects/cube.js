@@ -6,6 +6,7 @@ const CUBE = new THREE.Mesh(
 );
 
 CUBE.position.set( 0.1, 0.015, 0.09 );
+CUBE.name = 'cubeObject';
 
 export {CUBE}
 
