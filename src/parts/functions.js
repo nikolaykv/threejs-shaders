@@ -2,7 +2,8 @@ import {sizes} from "./other_settings";
 import {camera} from "./camera_settings";
 import donut from "../../donut.glb";
 import params from "../params.json";
-import {controls, scene, render, GROUP} from "../script";
+import {SCENE} from "./scene_settings";
+import {controls, render, GROUP} from "../script";
 import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
 
 /**
@@ -35,18 +36,23 @@ function donutGltfLoader() {
     loader.load(
         donut,
         function (donutObj) {
+
+            // пончик - отбрасывать тень
+            donutObj.scene.children[0].castShadow = true;
+
+            // пончик -позиция
             donutObj.scene.children[0].position.set(
                 params.meshPosition.x,
                 params.meshPosition.y,
                 params.meshPosition.z
             );
 
-            donutObj.scenes[0].name = 'blenderDonutScene';
-
-            GROUP.add(donutObj.scenes[0]);
+            // Добавить пончик в группу
+            GROUP.add(donutObj.scene.children[0]);
 
         },
-        // Отладка
+
+        // Отладка загрузчика
         /*function (xhr) {
             console.log((xhr.loaded / xhr.total * 100) + '% загружено');
         },
@@ -62,7 +68,7 @@ function donutGltfLoader() {
 function animateScene() {
     controls.update();
 
-    render.render(scene, camera);
+    render.render(SCENE, camera);
     window.requestAnimationFrame(animateScene);
 }
 

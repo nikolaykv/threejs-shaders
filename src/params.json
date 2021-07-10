@@ -1,23 +1,26 @@
 {
-  "lightOne": {
-    "comment": "Это первый точечный свет, который смотрит на пончик",
-    "x": 3,
-    "y": 3,
-    "z": 5
+  "hemisphereLight": {
+    "comment": "Источник света, расположенный непосредственно над сценой, с изменением цвета, от цвета неба до цвета земли. Теней на объектах не даёт.",
+    "position": {
+      "x": 0,
+      "y": 0.1,
+      "z": 0
+    }
   },
-  "lightTwo": {
-    "comment": "Это второй точечный свет, который находится прямо напротив первого источника света",
-    "x": -3,
-    "y": -3,
-    "z": -5
-  },
-  "lightColor": {
-    "comment": "Цвет обоих точечных источников света",
-    "value": "white"
-  },
-  "lightIntensity": {
-    "comment": "Интенсивность обоих точечных источников света",
-    "value": 1
+  "directionalLight": {
+    "comment": "Бесконечно далёкий источник света типа солнце, излучаемый в одном направлении. Все его лучи параллельны. Даёт тень на объектах.",
+    "position": {
+      "x": 0,
+      "y": 0.5,
+      "z": 0.5
+    },
+    "castShadow": true,
+    "shadowCamera": {
+      "top": 180,
+      "bottom": -100,
+      "left": -120,
+      "right": 120
+    }
   },
   "perspectiveCamera": {
     "comment": "Настройки камеры.",
@@ -36,11 +39,11 @@
   },
   "axesHelper": {
     "comment": "Толщина осей x,y,z и настройки TextGeometry их меток",
-    "size": 5,
+    "size": 200,
     "textSize": 0.03,
     "textHeight": 0.0001,
     "curveSegments": 12,
-    "color": "white",
+    "color": "black",
     "x": {
       "label": "x"
     },
@@ -53,16 +56,12 @@
   },
   "gridHelper": {
     "comment": "Настройки сетки, на которой располагаются объекты",
-    "size": 0.35,
-    "divisions": 50,
-    "colors": {
-      "one": "",
-      "two": "#4fc2c2"
-    }
+    "size":2,
+    "divisions": 50
   },
   "axesCoordinates": {
     "comment": "Настройки геометрии и цвета текста координат на осях AxesHelper",
     "size": 0.01,
-    "color": "white"
+    "color": "black"
   }
 }

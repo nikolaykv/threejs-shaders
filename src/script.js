@@ -28,11 +28,20 @@ import {
     pointFiveZ
 } from "./parts/axes_coordinates";
 
-import {AXES_HELPER, CAMERA_HELPER, GRID_HELPER, x, y, z} from "./parts/helpers";
+import {
+    AXES_HELPER,
+    CAMERA_HELPER,
+    GRID_HELPER,
+    x, y, z,
+    DIRECTION_LIGHT_HELPER,
+    HEMISPHERE_LIGHT_HELPER
+} from "./parts/helpers";
+
 import {screenResize, donutGltfLoader, animateScene} from "./parts/functions";
-import {lightOne, lightTwo} from "./parts/light_settings";
 import {sizes, CANVAS} from "./parts/other_settings";
 import {camera} from "./parts/camera_settings";
+import {hemiLight, directionalLight} from "./parts/light_settings";
+import {SCENE} from "./parts/scene_settings";
 import {CUBE} from "./objects/cube";
 
 /**
@@ -40,9 +49,6 @@ import {CUBE} from "./objects/cube";
  */
 import './style.css';
 
-// Создать сцену
-let scene = new THREE.Scene();
-scene.name = 'mainScene';
 
 // Сгруппировать элементы сцены
 const GROUP = new THREE.Group();
@@ -51,13 +57,16 @@ GROUP.name = 'commonGroup';
 // Добавить все вспомогательные оси и сетку
 GROUP.add(
     AXES_HELPER,
-    // CAMERA_HELPER, // Измени чтобы задействовать хелпер камеры
-    GRID_HELPER
+    GRID_HELPER,
+    // Измени чтобы задействовать хелперы
+    // CAMERA_HELPER, камера
+    // HEMISPHERE_LIGHT_HELPER,// сферический свет
+    // DIRECTION_LIGHT_HELPER // Направленный свет
 );
 
 // Добавить метки осей в группу и задать им расположение
 x.position.set(0.55, 0, 0);
-y.position.set(-0.01, 0.55,0);
+y.position.set(-0.01, 0.55, 0);
 z.position.set(-0.01, 0, 0.55);
 
 GROUP.add(x, y, z);
@@ -84,7 +93,6 @@ pointFourZ.position.set(-0.01, 0, 0.4);
 pointFiveZ.position.set(-0.01, 0, 0.5);
 
 
-
 GROUP.add(
     zeroPoint,
     pointOneX,
@@ -108,15 +116,28 @@ GROUP.add(
 
 // Добавить в группу свет
 GROUP.add(
-    lightOne,
-    lightTwo
+    hemiLight,
+    directionalLight
 );
 
 // Добавим ещё объект в группу
 GROUP.add(CUBE);
 
+const GROUND = new THREE.Mesh(
+    new THREE.PlaneGeometry(2, 2),
+    new THREE.MeshPhongMaterial(
+        {color: '#f3f4f7', depthWrite: false}
+    ));
+GROUND.rotation.x = -Math.PI / 2;
+GROUND.receiveShadow = true;
+
+GROUND.name = 'ground';
+
+GROUP.add(GROUND)
+
+
 // Добавить всю сцену в группу
-scene.add(GROUP);
+SCENE.add(GROUP);
 
 
 /**
@@ -141,8 +162,11 @@ donutGltfLoader();
  * Renderer
  */
 let render = new THREE.WebGLRenderer({
+    antialias: true,
     canvas: CANVAS
 });
+
+render.shadowMap.enabled = true;
 
 render.setSize(sizes.width, sizes.height)
 render.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -153,10 +177,10 @@ render.setPixelRatio(Math.min(window.devicePixelRatio, 2));
  */
 animateScene();
 
-export {scene, render, controls, GROUP};
+export {render, controls, GROUP};
 
 // Отладка через экспериментальное расширение Google Chrome
 if (typeof __THREE_DEVTOOLS__ !== 'undefined') {
-    __THREE_DEVTOOLS__.dispatchEvent(new CustomEvent('observe', { detail: scene }));
-    __THREE_DEVTOOLS__.dispatchEvent(new CustomEvent('observe', { detail: render }));
+    __THREE_DEVTOOLS__.dispatchEvent(new CustomEvent('observe', {detail: SCENE}));
+    __THREE_DEVTOOLS__.dispatchEvent(new CustomEvent('observe', {detail: render}));
 }
