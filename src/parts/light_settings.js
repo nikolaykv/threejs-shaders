@@ -1,36 +1,37 @@
 import * as THREE from "three";
 import params from '../params.json';
 
-let
-    hemiLight = new THREE.HemisphereLight(
-        0xffffff,
-        0x444444,
-        0.5
-    ),
+const HEMISPHERE_LIGHT = new THREE.HemisphereLight(
+    parseInt(params.hemisphereLight.params.skyColor, params.otherSettings.parseIntRadixValueToColor),
+    parseInt(params.hemisphereLight.params.groundColor, params.otherSettings.parseIntRadixValueToColor),
+    params.hemisphereLight.params.intensity
+);
 
-    directionalLight = new THREE.DirectionalLight(0xffffff, 0.7);
+const DIRECTION_LIGHT = new THREE.DirectionalLight(
+    parseInt(params.directionalLight.params.color, params.otherSettings.parseIntRadixValueToColor),
+    params.directionalLight.params.intensity
+);
 
-hemiLight.position.set(
+HEMISPHERE_LIGHT.position.set(
     params.hemisphereLight.position.x,
     params.hemisphereLight.position.y,
     params.hemisphereLight.position.z
 );
 
-
-directionalLight.position.set(
+DIRECTION_LIGHT.position.set(
     params.directionalLight.position.x,
     params.directionalLight.position.y,
     params.directionalLight.position.z,
-)
+);
 
-directionalLight.castShadow = true
-directionalLight.shadow.camera.top = 0.079999999;
-directionalLight.shadow.camera.bottom = -0.079999999;
-directionalLight.shadow.camera.left = 0.12;
-directionalLight.shadow.camera.right = -0.13;
+DIRECTION_LIGHT.castShadow = params.otherSettings.castShadow;
+DIRECTION_LIGHT.shadow.camera.top = params.directionalLight.shadowCamera.top;
+DIRECTION_LIGHT.shadow.camera.bottom = params.directionalLight.shadowCamera.bottom;
+DIRECTION_LIGHT.shadow.camera.left = params.directionalLight.shadowCamera.left;
+DIRECTION_LIGHT.shadow.camera.right = params.directionalLight.shadowCamera.right;
 
 
-directionalLight.name = 'directionalLight';
-hemiLight.name = 'hemiLight';
+DIRECTION_LIGHT.name = params.directionalLight.name;
+HEMISPHERE_LIGHT.name = params.hemisphereLight.name;
 
-export {hemiLight, directionalLight};
+export {HEMISPHERE_LIGHT, DIRECTION_LIGHT};

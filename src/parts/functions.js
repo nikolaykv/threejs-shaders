@@ -1,10 +1,10 @@
+import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
+import {ORBIT_CONTROLS, RENDER, GROUP} from "../script";
+import {CAMERA} from "./camera_settings";
+import {SCENE} from "./scene_settings";
 import {sizes} from "./other_settings";
-import {camera} from "./camera_settings";
 import donut from "../../donut.glb";
 import params from "../params.json";
-import {SCENE} from "./scene_settings";
-import {controls, render, GROUP} from "../script";
-import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
 
 /**
  * Логика изменения холста
@@ -13,27 +13,26 @@ import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
  */
 function screenResize() {
     window.addEventListener('resize', function () {
+
         // Update sizes
         sizes.width = window.innerWidth;
         sizes.height = window.innerHeight;
 
         // Update camera
-        camera.aspect = sizes.width / sizes.height;
-        camera.updateProjectionMatrix();
+        CAMERA.aspect = sizes.width / sizes.height;
+        CAMERA.updateProjectionMatrix();
 
         // Update renderer
-        render.setSize(sizes.width, sizes.height);
-        render.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        RENDER.setSize(sizes.width, sizes.height);
+        RENDER.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     });
 }
-
-let loader = new GLTFLoader();
 
 /**
  *  Загрузка 3D объекта и установка его позиции
  */
 function donutGltfLoader() {
-    loader.load(
+    new GLTFLoader().load(
         donut,
         function (donutObj) {
 
@@ -66,9 +65,9 @@ function donutGltfLoader() {
  * Анимация сцены
  */
 function animateScene() {
-    controls.update();
+    ORBIT_CONTROLS.update();
 
-    render.render(SCENE, camera);
+    RENDER.render(SCENE, CAMERA);
     window.requestAnimationFrame(animateScene);
 }
 

@@ -8,18 +8,18 @@ import {sizes} from "./other_settings";
  *
  * @type {PerspectiveCamera}
  */
-let camera = new THREE.PerspectiveCamera(
+const CAMERA = new THREE.PerspectiveCamera(
     params.perspectiveCamera.fov,
     sizes.width / sizes.height,
     params.perspectiveCamera.near,
     params.perspectiveCamera.far,
 );
 
-camera.position.set(
+CAMERA.position.set(
     params.perspectiveCamera.x,
     params.perspectiveCamera.y,
     params.perspectiveCamera.z
 );
 
 
-export {camera};
+export {CAMERA};

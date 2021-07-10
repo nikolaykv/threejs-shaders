@@ -1,8 +1,8 @@
 import * as THREE from 'three';
 import params from '../params.json';
-import {camera} from "./camera_settings";
+import {CAMERA} from "./camera_settings";
 import {HELVETIKER_REGULAR_FONT} from "./other_settings";
-import {directionalLight, hemiLight} from "./light_settings";
+import {DIRECTION_LIGHT, HEMISPHERE_LIGHT} from "./light_settings";
 
 /**
  * Визуализировать оси x, y, z
@@ -10,14 +10,15 @@ import {directionalLight, hemiLight} from "./light_settings";
  * @type {AxesHelper}
  */
 const AXES_HELPER = new THREE.AxesHelper(params.axesHelper.size);
-AXES_HELPER.name = 'axesHelper';
+AXES_HELPER.name = params.axesHelper.name;
 
 /**
  * Визуализировать оси камеры
  *
  * @type {CameraHelper}
  */
-const CAMERA_HELPER = new THREE.CameraHelper(camera);
+const CAMERA_HELPER = new THREE.CameraHelper(CAMERA);
+CAMERA_HELPER.name = params.otherNames.cameraHelper;
 
 /**
  * Сетка или "земля", на которой лежат объекты
@@ -27,49 +28,47 @@ const CAMERA_HELPER = new THREE.CameraHelper(camera);
 const GRID_HELPER = new THREE.GridHelper(
     params.gridHelper.size,
     params.gridHelper.divisions,
-    0x000000,
-    0x000000
+    parseInt(params.gridHelper.colors, params.otherSettings.parseIntRadixValueToColor),
+    parseInt(params.gridHelper.colors, params.otherSettings.parseIntRadixValueToColor)
 );
 
-GRID_HELPER.material.opacity = 0.2;
-GRID_HELPER.material.transparent = true;
-GRID_HELPER.name = 'gridHelper';
+GRID_HELPER.material.opacity = params.gridHelper.material.opacity;
+GRID_HELPER.material.transparent = params.gridHelper.material.transparent;
+GRID_HELPER.name = params.gridHelper.name;
 
 /**
  * Метки направляющих x,y,z осей, реализованные
  * через TextGeometry
  */
+const X = new THREE.Mesh(
+    new THREE.TextGeometry(params.axesHelper.x.label, {
+        size: params.axesHelper.textSize,
+        height: params.axesHelper.textHeight,
+        curveSegments: params.axesHelper.curveSegments,
+        font: HELVETIKER_REGULAR_FONT,
+        style: params.otherSettings.fontStyle
+    }),
+    new THREE.MeshBasicMaterial({color: params.axesHelper.color}));
 
-let
-    x = new THREE.Mesh(
-        new THREE.TextGeometry(params.axesHelper.x.label, {
-            size: params.axesHelper.textSize,
-            height: params.axesHelper.textHeight,
-            curveSegments: params.axesHelper.curveSegments,
-            font: HELVETIKER_REGULAR_FONT,
-            style: "normal"
-        }),
-        new THREE.MeshBasicMaterial({color: params.axesHelper.color})),
+const Y = new THREE.Mesh(
+    new THREE.TextGeometry(params.axesHelper.y.label, {
+        size: params.axesHelper.textSize,
+        height: params.axesHelper.textHeight,
+        curveSegments: params.axesHelper.curveSegments,
+        font: HELVETIKER_REGULAR_FONT,
+        style: params.otherSettings.fontStyle
+    }),
+    new THREE.MeshBasicMaterial({color: params.axesHelper.color}));
 
-    y = new THREE.Mesh(
-        new THREE.TextGeometry(params.axesHelper.y.label, {
-            size: params.axesHelper.textSize,
-            height: params.axesHelper.textHeight,
-            curveSegments: params.axesHelper.curveSegments,
-            font: HELVETIKER_REGULAR_FONT,
-            style: "normal"
-        }),
-        new THREE.MeshBasicMaterial({color: params.axesHelper.color})),
-
-    z = new THREE.Mesh(
-        new THREE.TextGeometry(params.axesHelper.z.label, {
-            size: params.axesHelper.textSize,
-            height: params.axesHelper.textHeight,
-            curveSegments: params.axesHelper.curveSegments,
-            font: HELVETIKER_REGULAR_FONT,
-            style: "normal"
-        }),
-        new THREE.MeshBasicMaterial({color: params.axesHelper.color}));
+const Z = new THREE.Mesh(
+    new THREE.TextGeometry(params.axesHelper.z.label, {
+        size: params.axesHelper.textSize,
+        height: params.axesHelper.textHeight,
+        curveSegments: params.axesHelper.curveSegments,
+        font: HELVETIKER_REGULAR_FONT,
+        style: params.otherSettings.fontStyle
+    }),
+    new THREE.MeshBasicMaterial({color: params.axesHelper.color}));
 
 /**
  * Хелпер DirectionalLight источника света
@@ -77,19 +76,25 @@ let
  * @type {DirectionalLightHelper}
  */
 const DIRECTION_LIGHT_HELPER = new THREE.DirectionalLightHelper(
-    directionalLight,
+    DIRECTION_LIGHT,
     params.axesHelper.size
 );
 
-
 const HEMISPHERE_LIGHT_HELPER = new THREE.HemisphereLightHelper(
-    hemiLight
+    HEMISPHERE_LIGHT
 );
 
 DIRECTION_LIGHT_HELPER.name = 'directionLightHelper';
 
-x.name = 'axesLabelX';
-y.name = 'axesLabelY';
-z.name = 'axesLabelZ';
+X.name = params.axesHelper.x.name;
+Y.name = params.axesHelper.y.name;
+Z.name = params.axesHelper.z.name;
 
-export {AXES_HELPER, CAMERA_HELPER, GRID_HELPER, x, y, z, DIRECTION_LIGHT_HELPER, HEMISPHERE_LIGHT_HELPER};
+export {
+    AXES_HELPER,
+    CAMERA_HELPER,
+    GRID_HELPER,
+    X, Y, Z,
+    DIRECTION_LIGHT_HELPER,
+    HEMISPHERE_LIGHT_HELPER
+};

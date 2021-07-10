@@ -1,13 +1,29 @@
 import * as THREE from 'three';
+import params from '../params.json'
 
 const CUBE = new THREE.Mesh(
-    new THREE.BoxGeometry(0.03, 0.03, 0.03),
-    new THREE.MeshPhongMaterial({color: 0x00ff00})
+    new THREE.BoxGeometry(
+        params.cubeMeshObject.geometry.sizes,
+        params.cubeMeshObject.geometry.sizes,
+        params.cubeMeshObject.geometry.sizes
+    ),
+    new THREE.MeshPhongMaterial(
+        {
+            color: parseInt(
+                params.cubeMeshObject.material.color,
+                params.otherSettings.parseIntRadixValueToColor
+            )
+        }
+    )
 );
 
-CUBE.castShadow = true;
-CUBE.position.set( 0.1, 0.015, 0.09 );
-CUBE.name = 'cubeObject';
+CUBE.castShadow = params.otherSettings.castShadow;
+CUBE.position.set(
+    params.cubeMeshObject.position.x,
+    params.cubeMeshObject.position.y,
+    params.cubeMeshObject.position.z,
+);
+CUBE.name = params.cubeMeshObject.customName;
 
 export {CUBE}
 

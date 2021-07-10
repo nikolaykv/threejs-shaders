@@ -19,6 +19,10 @@ const CANVAS = document.querySelector('canvas.webgl');
  *
  * @type {Font}
  */
-const HELVETIKER_REGULAR_FONT = new THREE.Font(require('three/examples/fonts/helvetiker_regular.typeface.json'))
+const HELVETIKER_REGULAR_FONT = new THREE.Font(
+    require(
+        'three/examples/fonts/helvetiker_regular.typeface.json'
+    )
+);
 
 export {sizes, CANVAS, HELVETIKER_REGULAR_FONT};

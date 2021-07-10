@@ -1,27 +1,39 @@
 {
   "hemisphereLight": {
     "comment": "Источник света, расположенный непосредственно над сценой, с изменением цвета, от цвета неба до цвета земли. Теней на объектах не даёт.",
+    "name": "hemisphereLight",
     "position": {
       "x": 0,
       "y": 0.1,
       "z": 0
+    },
+    "params": {
+      "skyColor": "0xffffff",
+      "groundColor": "0x444444",
+      "intensity": 0.5
     }
   },
+
   "directionalLight": {
     "comment": "Бесконечно далёкий источник света типа солнце, излучаемый в одном направлении. Все его лучи параллельны. Даёт тень на объектах.",
+    "name": "directionalLight",
     "position": {
       "x": 0,
       "y": 0.5,
       "z": 0.5
     },
-    "castShadow": true,
+    "params": {
+      "color": "0xffffff",
+      "intensity": 0.5
+    },
     "shadowCamera": {
-      "top": 180,
-      "bottom": -100,
-      "left": -120,
-      "right": 120
+      "top": 0.079999999,
+      "bottom": -0.079999999,
+      "left": 0.12,
+      "right": -0.13
     }
   },
+
   "perspectiveCamera": {
     "comment": "Настройки камеры.",
     "fov": 10,
@@ -31,37 +43,118 @@
     "y": 0.700,
     "z": 1.800
   },
+
   "meshPosition": {
     "comment": "Позиция 3D пончика",
     "x": 0,
     "y": 0.0289,
     "z": 0
   },
+
   "axesHelper": {
     "comment": "Толщина осей x,y,z и настройки TextGeometry их меток",
+    "name": "axesHelper",
     "size": 200,
     "textSize": 0.03,
     "textHeight": 0.0001,
     "curveSegments": 12,
     "color": "black",
     "x": {
-      "label": "x"
+      "label": "x",
+      "name": "axesLabelX"
     },
     "y": {
-      "label": "y"
+      "label": "y",
+      "name": "axesLabelY"
     },
     "z": {
-      "label": "z"
+      "label": "z",
+      "name": "axesLabelZ"
     }
   },
+
   "gridHelper": {
     "comment": "Настройки сетки, на которой располагаются объекты",
-    "size":2,
-    "divisions": 50
+    "name": "gridHelper",
+    "size": 2,
+    "divisions": 50,
+    "colors": "0x000000",
+    "material": {
+      "opacity": 0.2,
+      "transparent": true
+    }
   },
+
   "axesCoordinates": {
     "comment": "Настройки геометрии и цвета текста координат на осях AxesHelper",
     "size": 0.01,
     "color": "black"
+  },
+
+  "cubeMeshObject": {
+    "comment": "Настройка объекта куба",
+    "customName": "cubeObject",
+    "geometry": {
+      "sizes": 0.03
+    },
+    "material": {
+      "color": "0x00ff00"
+    },
+    "position": {
+      "x": 0.1,
+      "y": 0.015,
+      "z": 0.09
+    }
+  },
+
+  "otherSettings": {
+    "comment": "Прочие настройки",
+    "castShadow": true,
+    "parseIntRadixValueToColor": 16,
+    "fontStyle": "normal",
+    "true": true,
+    "false": false
+  },
+
+  "axesCoordinateNames": {
+    "comment": "Имена координат на осях x,y,z для отладки",
+    "textGeometryZeroCoordinates": "textGeometryZeroCoordinates",
+    "textGeometryPointOneAxisX": "textGeometryPointOneAxisX",
+    "textGeometryPointTwoAxisX": "textGeometryPointTwoAxisX",
+    "textGeometryPointThreeAxisX": "textGeometryPointThreeAxisX",
+    "textGeometryPointFourAxisX": "textGeometryPointFourAxisX",
+    "textGeometryPointFiveAxisX": "textGeometryPointFiveAxisX",
+    "textGeometryPointOneAxisY": "textGeometryPointOneAxisY",
+    "textGeometryPointTwoAxisY": "textGeometryPointTwoAxisY",
+    "textGeometryPointThreeAxisY": "textGeometryPointThreeAxisY",
+    "textGeometryPointFourAxisY": "textGeometryPointFourAxisY",
+    "textGeometryPointFiveAxisY": "textGeometryPointFiveAxisY",
+    "textGeometryPointOneAxisZ": "textGeometryPointOneAxisZ",
+    "textGeometryPointTwoAxisZ": "textGeometryPointTwoAxisZ",
+    "textGeometryPointThreeAxisZ": "textGeometryPointThreeAxisZ",
+    "textGeometryPointFourAxisZ": "textGeometryPointFourAxisZ",
+    "textGeometryPointFiveAxisZ": "textGeometryPointFiveAxisZ"
+  },
+
+  "otherNames": {
+    "comment": "Другие имена для отладки",
+    "cameraHelper": "cameraHelper",
+    "groupName": "commonGroup"
+  },
+
+  "sceneSettings": {
+    "comment": "Настройки сцены",
+    "name": "mainScene",
+    "background": "0xa0a0a0",
+    "fog": {
+      "color": "0xa0a0a0",
+      "near": 0.5,
+      "far": 7
+    },
+    "ground": {
+      "name": "ground",
+      "sizes": 2,
+      "color": "white"
+    }
   }
 }
