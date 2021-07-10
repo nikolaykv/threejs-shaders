@@ -71,7 +71,6 @@ let
         }),
         new THREE.MeshBasicMaterial({color: params.axesHelper.color}));
 
-x.castShadow = true;
 /**
  * Хелпер DirectionalLight источника света
  *
