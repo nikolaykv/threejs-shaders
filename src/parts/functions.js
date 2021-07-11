@@ -5,6 +5,7 @@ import {SCENE} from "./scene_settings";
 import {sizes} from "./other_settings";
 import donut from "../../donut.glb";
 import params from "../params.json";
+import {CUBE} from "../objects/cube";
 
 /**
  * Логика изменения холста
@@ -66,8 +67,8 @@ function donutGltfLoader() {
  */
 function animateScene() {
     ORBIT_CONTROLS.update();
-
     RENDER.render(SCENE, CAMERA);
+    CUBE.rotation.y += 0.01;
     window.requestAnimationFrame(animateScene);
 }
 

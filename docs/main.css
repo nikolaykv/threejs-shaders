@@ -1,23 +1,47 @@
-*
-{
+* {
     margin: 0;
     padding: 0;
 }
 
 html,
-body
-{
+body {
     height: 100vh;
-    font-family: 'Poppins';
 }
 
-.webgl
-{
+.webgl {
     position: fixed;
     top: 0;
     left: 0;
     outline: none;
 }
 
+.camera-control-info {
+    position: absolute;
+    bottom: 10px;
+    width: 50vw;
+    text-align: center;
+    z-index: 100;
+    left: 25px;
+    background: darkgray;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+    opacity: 0.7;
+}
+
+.camera-control-info:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.camera-control-info .mouse-buttons {
+    text-align: left;
+    margin-top: .5em;
+}
+
+.camera-control-info .mouse-buttons p {
+    margin-bottom: 7px;
+    font-size: 18px;
+}
 
 /*# sourceMappingURL=main.css.map*/

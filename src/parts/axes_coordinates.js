@@ -225,7 +225,7 @@ POINT_ONE_Z.name = params.axesCoordinateNames.textGeometryPointOneAxisZ;
 POINT_TWO_Z.name = params.axesCoordinateNames.textGeometryPointTwoAxisZ;
 POINT_THREE_Z.name = params.axesCoordinateNames.textGeometryPointThreeAxisZ;
 POINT_FOUR_Z.name = params.axesCoordinateNames.textGeometryPointFourAxisZ;
-POINT_FIVE_Y.name = params.axesCoordinateNames.textGeometryPointFiveAxisZ;
+POINT_FIVE_Z.name = params.axesCoordinateNames.textGeometryPointFiveAxisZ;
 
 export {
     ZERO_POINT,
