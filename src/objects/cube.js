@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import params from '../params.json'
 
+
 const CUBE = new THREE.Mesh(
     new THREE.BoxGeometry(
         params.cubeMeshObject.geometry.sizes,

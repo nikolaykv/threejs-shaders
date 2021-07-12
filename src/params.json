@@ -85,6 +85,13 @@
     }
   },
 
+  "vertexNormalsHelper": {
+    "comment": "Хелпер направляющих для вершин треугольников BufferGeometry из которых и строятся объекты данного класса",
+    "name": "bufferGeometryRectangleHelper",
+    "size": 0.5,
+    "color": "red"
+  },
+
   "axesCoordinates": {
     "comment": "Настройки геометрии и цвета текста координат на осях AxesHelper",
     "size": 0.01,

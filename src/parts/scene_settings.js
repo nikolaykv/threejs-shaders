@@ -10,14 +10,14 @@ SCENE.background = new THREE.Color(
     )
 );
 
-SCENE.fog = new THREE.Fog(
+/*SCENE.fog = new THREE.Fog(
     parseInt(
         params.sceneSettings.fog.color,
         params.otherSettings.parseIntRadixValueToColor
     ),
     params.sceneSettings.fog.near,
     params.sceneSettings.fog.far
-);
+);*/
 
 
 // Земля

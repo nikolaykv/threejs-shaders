@@ -35,11 +35,13 @@ import {
     X, Y, Z,
     CAMERA_HELPER,
     DIRECTION_LIGHT_HELPER,
-    HEMISPHERE_LIGHT_HELPER
+    HEMISPHERE_LIGHT_HELPER,
+    BUFFER_GEOMETRY_RECTANGLE_VERTEX_NORMALS_HELPER
 } from "./parts/helpers";
 
 import {screenResize, donutGltfLoader, animateScene} from "./parts/functions";
 import {HEMISPHERE_LIGHT, DIRECTION_LIGHT} from "./parts/light_settings";
+import {BUFFER_GEOMETRY_RECTANGLE} from "./objects/rectangle/rectangle";
 import {sizes, CANVAS} from "./parts/other_settings";
 import {SCENE, GROUND} from "./parts/scene_settings";
 import {CAMERA} from "./parts/camera_settings";
@@ -63,7 +65,8 @@ GROUP.add(
     // Измени чтобы задействовать хелперы
     // CAMERA_HELPER, камера
     // HEMISPHERE_LIGHT_HELPER,// сферический свет
-    // DIRECTION_LIGHT_HELPER // Направленный свет
+    // DIRECTION_LIGHT_HELPER, // Направленный свет
+    // BUFFER_GEOMETRY_RECTANGLE_VERTEX_NORMALS_HELPER // Отображает направление нормалей вершин BufferGeometry
 );
 
 // Добавить метки осей в группу и задать им расположение
@@ -123,8 +126,8 @@ GROUP.add(
     DIRECTION_LIGHT
 );
 
-// Добавим ещё объект в группу
-GROUP.add(CUBE);
+// Добавим ещё объекты в группу
+GROUP.add(CUBE, BUFFER_GEOMETRY_RECTANGLE);
 
 // Добавить "землю" в сцену
 GROUP.add(GROUND);

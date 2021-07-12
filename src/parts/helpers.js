@@ -3,6 +3,8 @@ import params from '../params.json';
 import {CAMERA} from "./camera_settings";
 import {HELVETIKER_REGULAR_FONT} from "./other_settings";
 import {DIRECTION_LIGHT, HEMISPHERE_LIGHT} from "./light_settings";
+import {BUFFER_GEOMETRY_RECTANGLE} from '../objects/rectangle/rectangle';
+import {VertexNormalsHelper} from "three/examples/jsm/helpers/VertexNormalsHelper";
 
 /**
  * Визуализировать оси x, y, z
@@ -90,11 +92,27 @@ X.name = params.axesHelper.x.name;
 Y.name = params.axesHelper.y.name;
 Z.name = params.axesHelper.z.name;
 
+/**
+ * Хелпер направляющих для вершин треугольников BufferGeometry
+ * из которых и строятся объекты данного класса
+ *
+ * @type {VertexNormalsHelper}
+ */
+const BUFFER_GEOMETRY_RECTANGLE_VERTEX_NORMALS_HELPER = new VertexNormalsHelper(
+    BUFFER_GEOMETRY_RECTANGLE,
+    params.vertexNormalsHelper.size,
+    params.vertexNormalsHelper.color,
+);
+
+BUFFER_GEOMETRY_RECTANGLE_VERTEX_NORMALS_HELPER.name = params.vertexNormalsHelper.name;
+
+
 export {
     AXES_HELPER,
     CAMERA_HELPER,
     GRID_HELPER,
     X, Y, Z,
     DIRECTION_LIGHT_HELPER,
-    HEMISPHERE_LIGHT_HELPER
+    HEMISPHERE_LIGHT_HELPER,
+    BUFFER_GEOMETRY_RECTANGLE_VERTEX_NORMALS_HELPER
 };
