@@ -25,4 +25,13 @@ const HELVETIKER_REGULAR_FONT = new THREE.Font(
     )
 );
 
-export {sizes, CANVAS, HELVETIKER_REGULAR_FONT};
+/**
+ * Загрузчик текстур и текстура
+ */
+const TEXTURE =  new THREE.TextureLoader().load('/textures/minecraft.png');
+
+// Фильтр для текстуры
+TEXTURE.magFilter = THREE.NearestFilter;
+
+
+export {sizes, CANVAS, HELVETIKER_REGULAR_FONT, TEXTURE};

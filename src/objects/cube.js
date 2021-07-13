@@ -1,19 +1,20 @@
 import * as THREE from 'three';
 import params from '../params.json'
-
+import {TEXTURE} from "../parts/other_settings";
 
 const CUBE = new THREE.Mesh(
-    new THREE.BoxGeometry(
+    new THREE.BoxBufferGeometry(
         params.cubeMeshObject.geometry.sizes,
         params.cubeMeshObject.geometry.sizes,
         params.cubeMeshObject.geometry.sizes
     ),
     new THREE.MeshPhongMaterial(
         {
-            color: parseInt(
+            /*color: parseInt(
                 params.cubeMeshObject.material.color,
                 params.otherSettings.parseIntRadixValueToColor
-            )
+            )*/
+            map: TEXTURE
         }
     )
 );

@@ -11,6 +11,7 @@ SCENE.background = new THREE.Color(
 );
 
 // Эффект тумана
+
 SCENE.fog = new THREE.Fog(
     parseInt(
         params.sceneSettings.fog.color,
