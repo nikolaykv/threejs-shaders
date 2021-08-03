@@ -1,30 +1,33 @@
 import * as THREE from "three";
 
-
-const HEMISPHERE_LIGHT = new THREE.HemisphereLight(
-    parseInt("0xffffff", 16),
-    parseInt("0x444444", 16),
-    0.5
-);
-
-const DIRECTION_LIGHT = new THREE.DirectionalLight(
-    parseInt("0xffffff", 16),
-    0.5
-);
-
-HEMISPHERE_LIGHT.position.set(0, 0.1, 0);
-DIRECTION_LIGHT.position.set(0, 0.5, 0.5);
-
-
 const AMBIENT_LIGHT = new THREE.AmbientLight(
     0xffffff,
+    0.5
+);
+
+const DIRECTIONAL_LIGHT = new THREE.DirectionalLight(
+    0x00fffc,
+    0.3
+);
+
+const HEMISPHERE_LIGHT = new THREE.HemisphereLight(
+    0xff0000,
+    0x0000ff,
     0.3
 );
 
 const POINT_LIGHT = new THREE.PointLight(
-    0xffffff,
-    0.3
+    0xff9000,
+    0.5,
+    10,
+    2
 );
-POINT_LIGHT.position.set(2, 3, 4);
+POINT_LIGHT.position.set(
+    0.8,
+    0.3,
+    0.4
+);
 
-export {AMBIENT_LIGHT, POINT_LIGHT, HEMISPHERE_LIGHT, DIRECTION_LIGHT}
+// TODO https://coursehunters.online/t/threejs-journey-part-3/4411
+// TODO RectAreaLight
+export {AMBIENT_LIGHT, DIRECTIONAL_LIGHT, HEMISPHERE_LIGHT, POINT_LIGHT};

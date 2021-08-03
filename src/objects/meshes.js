@@ -1,4 +1,3 @@
-import {MATERIAL} from "./examples/material_example";
 import {PARAMETERS} from "../parts/parameters";
 import * as THREE from 'three';
 
@@ -10,20 +9,15 @@ const CUBE_MESH = new THREE.Mesh(
 
 CUBE_MESH.position.set(0.076, 0.076, 0.076);
 
+const MATERIAL = new THREE.MeshStandardMaterial();
+MATERIAL.metalness = 0.5;
+MATERIAL.roughness = 0.4;
 
 const SPHERE_MESH = new THREE.Mesh(
     new THREE.SphereBufferGeometry(
         0.2,
         32,
         32
-    ),
-    MATERIAL
-);
-
-const PLANE_MESH = new THREE.Mesh(
-    new THREE.PlaneBufferGeometry(
-        0.4,
-        0.4
     ),
     MATERIAL
 );
@@ -39,54 +33,25 @@ const TORUS_MESH = new THREE.Mesh(
 );
 
 SPHERE_MESH.position.set(
-    -1,
+    -0.7,
     0.2,
-    -0.5
-);
-
-PLANE_MESH.position.set(
-    0,
-    0.2,
-    -0.5
+    0
 );
 
 TORUS_MESH.position.set(
-    1,
+    0.7,
     0.3,
-    -0.5
+    0
 );
 
-/*SPHERE_MESH.geometry.setAttribute(
-    'uv2',
-    new THREE.BufferAttribute(
-        SPHERE_MESH.geometry.attributes.uv.array,
-        2
-    )
-);
-
-PLANE_MESH.geometry.setAttribute(
-    'uv2',
-    new THREE.BufferAttribute(
-        PLANE_MESH.geometry.attributes.uv.array,
-        2
-    )
-);
-
-TORUS_MESH.geometry.setAttribute(
-    'uv2',
-    new THREE.BufferAttribute(
-        TORUS_MESH.geometry.attributes.uv.array,
-        2
-    )
-);*/
+TORUS_MESH.rotation.x = -2.7;
 
 SPHERE_MESH.name = 'Сфера';
-PLANE_MESH.name = 'Плоскость';
 TORUS_MESH.name = 'Торус';
 
 export {
     CUBE_MESH,
     SPHERE_MESH,
-    PLANE_MESH,
-    TORUS_MESH
+    TORUS_MESH,
+    MATERIAL
 };
