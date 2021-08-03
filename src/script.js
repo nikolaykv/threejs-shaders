@@ -9,11 +9,23 @@ import {
     GRID_HELPER,
 } from "./parts/helpers";
 
+import {
+    AMBIENT_LIGHT,
+    POINT_LIGHT,
+    HEMISPHERE_LIGHT,
+    DIRECTION_LIGHT
+} from "./parts/light_settings";
+
 import {screenResize, animateScene} from "./parts/functions";
 import {sizes, CANVAS} from "./parts/other_settings";
 import {CAMERA} from "./parts/camera_settings";
 import {SCENE} from "./parts/scene_settings";
-import {CUBE_MESH} from "./objects/meshes";
+import {
+    CUBE_MESH,
+    SPHERE_MESH,
+    PLANE_MESH,
+    TORUS_MESH
+} from "./objects/meshes";
 
 
 /**
@@ -22,6 +34,7 @@ import {CUBE_MESH} from "./objects/meshes";
 import './style.css';
 import {PARAMETERS} from "./parts/parameters";
 import {GUI} from "./parts/dat_gui_settings";
+import {MATERIAL} from "./objects/examples/material_example";
 
 // Сгруппировать элементы сцены
 const GROUP = new THREE.Group();
@@ -30,34 +43,55 @@ const GROUP = new THREE.Group();
 GROUP.add(
     AXES_HELPER,
     GRID_HELPER,
+
     CUBE_MESH,
+    SPHERE_MESH,
+    PLANE_MESH,
+    TORUS_MESH,
+
+    AMBIENT_LIGHT,
+    POINT_LIGHT,
+/*    HEMISPHERE_LIGHT,
+    DIRECTION_LIGHT*/
 );
 
 /* GUI панель настройки START */
 let
-    material_settings = GUI.addFolder('Настройки материала: '),
-    other_settings = GUI.addFolder('Другие настройки: '),
-    position_settings = GUI.addFolder('Позиция фигуры: '),
-    functions = GUI.addFolder('Функции: ');
+    material = GUI.addFolder('Настройки материала: '),
+    other = GUI.addFolder('Другие настройки: '),
+    position = GUI.addFolder('Позиция фигуры: '),
+    functions = GUI.addFolder('Функции: '),
+    camera = GUI.addFolder('Настройки камеры: ');
 
-position_settings.add(CUBE_MESH.position, 'x', 0, 1, 0.01);
-position_settings.add(CUBE_MESH.position, 'y', 0, 1, 0.01);
-position_settings.add(CUBE_MESH.position, 'z', 0, 1, 0.01);
+position.add(CUBE_MESH.position, 'x', 0, 1, 0.01);
+position.add(CUBE_MESH.position, 'y', 0, 1, 0.01);
+position.add(CUBE_MESH.position, 'z', 0, 1, 0.01);
 
-material_settings
+material
     .add(CUBE_MESH.material, 'wireframe')
     .name('Показать каркас: ');
 
-material_settings
+material
     .addColor(PARAMETERS, 'color')
     .onChange(function () {
         CUBE_MESH.material.color.set(PARAMETERS.color);
     })
     .name('Цвет фигуры: ');
 
+material
+    .add(MATERIAL, 'metalness', 0, 1, 0.0001)
+    .name('Металличность: ');
 
-other_settings.add(CUBE_MESH, 'visible').name('Видимость');
+material
+    .add(MATERIAL, 'roughness', 0, 1, 0.0001)
+    .name('Шероховатость: ');
+
+
+other.add(CUBE_MESH, 'visible').name('Видимость');
 functions.add(PARAMETERS, 'spin').name('Вращать фигуру');
+camera.add(CAMERA.position, 'x', 0, 5, 0.01);
+camera.add(CAMERA.position, 'y', 0, 5, 0.01);
+camera.add(CAMERA.position, 'z', 0, 5, 0.01);
 /* GUI панель настройки END */
 
 // Добавить всю сцену в группу

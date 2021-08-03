@@ -13,7 +13,7 @@ const AXES_HELPER = new THREE.AxesHelper(200);
  * @type {GridHelper}
  */
 const GRID_HELPER = new THREE.GridHelper(
-    2,
+    3,
     10,
     "",
     "white",

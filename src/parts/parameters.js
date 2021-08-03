@@ -2,7 +2,7 @@ import gsap from "gsap";
 import {CUBE_MESH} from "../objects/meshes";
 
 const PARAMETERS = {
-    color: 0xff0000,
+    color: 0x69ff,
     spin: function () {
         gsap.to(
             CUBE_MESH.rotation,
