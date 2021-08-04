@@ -28,6 +28,27 @@ POINT_LIGHT.position.set(
     0.4
 );
 
-// TODO https://coursehunters.online/t/threejs-journey-part-3/4411
-// TODO RectAreaLight
-export {AMBIENT_LIGHT, DIRECTIONAL_LIGHT, HEMISPHERE_LIGHT, POINT_LIGHT};
+const RECT_AREA_LIGHT = new THREE.RectAreaLight(
+    0x4e00ff,
+    2,
+    1,
+    1
+);
+
+const SPOT_LIGHT = new THREE.SpotLight(
+    0x78ff00,
+    0.5,
+    10,
+    Math.PI * 0.1,
+    0.25,
+    1
+);
+
+export {
+    AMBIENT_LIGHT,
+    DIRECTIONAL_LIGHT,
+    HEMISPHERE_LIGHT,
+    POINT_LIGHT,
+    RECT_AREA_LIGHT,
+    SPOT_LIGHT
+};

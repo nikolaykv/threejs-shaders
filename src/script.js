@@ -18,6 +18,8 @@ import {
     DIRECTIONAL_LIGHT,
     HEMISPHERE_LIGHT,
     POINT_LIGHT,
+    RECT_AREA_LIGHT,
+    SPOT_LIGHT
 } from "./parts/light_settings";
 
 import {
@@ -50,6 +52,8 @@ GROUP.add(
     DIRECTIONAL_LIGHT,
     HEMISPHERE_LIGHT,
     POINT_LIGHT,
+    RECT_AREA_LIGHT,
+    SPOT_LIGHT,
 
     GUI
 );

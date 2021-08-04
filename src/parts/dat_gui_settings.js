@@ -12,7 +12,11 @@ const GUI = new dat.GUI(
 import {
     AMBIENT_LIGHT,
     DIRECTIONAL_LIGHT,
-    HEMISPHERE_LIGHT, POINT_LIGHT
+    HEMISPHERE_LIGHT,
+    POINT_LIGHT,
+    RECT_AREA_LIGHT,
+    SPOT_LIGHT,
+
 } from "./light_settings";
 
 let
@@ -26,7 +30,9 @@ let
     ambientLight = lights.addFolder('Ambient Light: '),
     directionalLight = lights.addFolder('Directional Light: '),
     hemisphereLight = lights.addFolder('Hemisphere Light: '),
-    pointLight = lights.addFolder('Point Light');
+    pointLight = lights.addFolder('Point Light'),
+    rectAreaLight = lights.addFolder('React Area Light'),
+    spotLight = lights.addFolder('Spot Light');
 
 position.add(CUBE_MESH.position, 'x', 0, 1, 0.01);
 position.add(CUBE_MESH.position, 'y', 0, 1, 0.01);
@@ -70,5 +76,12 @@ pointLight.add(POINT_LIGHT, 'intensity', 0, 1, 0.001).name('Интенсивно
 pointLight.add(POINT_LIGHT.position, 'x', 0, 5, 0.01).name('Позиция ось x: ');
 pointLight.add(POINT_LIGHT.position, 'y', 0, 5, 0.01).name('Позиция ось y: ');
 pointLight.add(POINT_LIGHT.position, 'z', 0, 5, 0.01).name('Позиция ось z: ');
+
+rectAreaLight.add(RECT_AREA_LIGHT, 'intensity', 0, 1, 0.001).name('Интенсивность прямоугольного света: ');
+rectAreaLight.add(RECT_AREA_LIGHT.position, 'x', 0, 5, 0.01).name('Позиция ось x: ');
+rectAreaLight.add(RECT_AREA_LIGHT.position, 'y', 0, 5, 0.01).name('Позиция ось y: ');
+rectAreaLight.add(RECT_AREA_LIGHT.position, 'z', 0, 5, 0.01).name('Позиция ось z: ');
+
+spotLight.add(SPOT_LIGHT, 'intensity', 0, 1, 0.001).name('Интенсивность прожекторного света: ');
 
 export {GUI}
