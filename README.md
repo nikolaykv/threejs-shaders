@@ -1,5 +1,5 @@
 # Three.js Starter
-Простая [3D модель пончика](https://nikolaykv.github.io/threejs-donut-3d-model/) 
+Демонстрация [результата](https://nikolaykv.github.io/Haunted-house/) 
 
 ## Установка
 Скачай [Node.js](https://nodejs.org/en/download/).

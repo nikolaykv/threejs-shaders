@@ -1,19 +1,19 @@
 import * as THREE from 'three';
 
 const GRASS_COLOR_TEXTURE = new THREE.TextureLoader().load(
-    '/textures/grass/color.jpg'
+    './textures/grass/color.jpg'
 );
 
 const GRASS_AMBIENT_OCCLUSION_TEXTURE = new THREE.TextureLoader().load(
-    '/textures/grass/ambientOcclusion.jpg'
+    './textures/grass/ambientOcclusion.jpg'
 );
 
 const GRASS_NORMAL_TEXTURE = new THREE.TextureLoader().load(
-    '/textures/grass/normal.jpg'
+    './textures/grass/normal.jpg'
 );
 
 const GRASS_ROUGHNESS_TEXTURE = new THREE.TextureLoader().load(
-    '/textures/grass/roughness.jpg'
+    './textures/grass/roughness.jpg'
 );
 
 GRASS_COLOR_TEXTURE.repeat.set(8, 8);

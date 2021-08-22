@@ -1,31 +1,31 @@
 import * as THREE from 'three';
 
 const DOOR_COLOR_TEXTURE = new THREE.TextureLoader().load(
-    '/textures/door/color.jpg'
+    './textures/door/color.jpg'
 );
 
 const DOOR_ALPHA_TEXTURE = new THREE.TextureLoader().load(
-    '/textures/door/alpha.jpg'
+    './textures/door/alpha.jpg'
 );
 
 const DOOR_AMBIENT_OCCLUSION_TEXTURE = new THREE.TextureLoader().load(
-    '/textures/door/ambientOcclusion.jpg'
+    './textures/door/ambientOcclusion.jpg'
 );
 
 const DOOR_HEIGHT_TEXTURE = new THREE.TextureLoader().load(
-    '/textures/door/height.jpg'
+    './textures/door/height.jpg'
 );
 
 const DOOR_NORMAL_TEXTURE = new THREE.TextureLoader().load(
-    '/textures/door/normal.jpg'
+    './textures/door/normal.jpg'
 );
 
 const DOOR_METALNESS_TEXTURE = new THREE.TextureLoader().load(
-    '/textures/door/metalness.jpg'
+    './textures/door/metalness.jpg'
 );
 
 const DOOR_ROUGHNESS_TEXTURE = new THREE.TextureLoader().load(
-    '/textures/door/roughness.jpg'
+    './textures/door/roughness.jpg'
 );
 
 export {
