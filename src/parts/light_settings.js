@@ -1,16 +1,33 @@
 import * as THREE from "three";
 
 const AMBIENT_LIGHT = new THREE.AmbientLight(
-    0xffffff,
-    0.5
+    '#b9d5ff',
+    0.12
 );
 
-const DIRECTIONAL_LIGHT = new THREE.DirectionalLight(
-    0x00fffc,
-    0.3
+const MOON_LIGHT = new THREE.DirectionalLight(
+    '#b9d5ff',
+    0.12
+);
+MOON_LIGHT.position.set(
+    4,
+    5,
+    -2
+);
+
+const DOOR_LIGHT = new THREE.PointLight(
+    '#ff7d46',
+    1,
+    7
+);
+DOOR_LIGHT.position.set(
+    0,
+    2.2,
+    2.7
 );
 
 export {
     AMBIENT_LIGHT,
-    DIRECTIONAL_LIGHT,
+    MOON_LIGHT,
+    DOOR_LIGHT,
 };

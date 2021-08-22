@@ -8,16 +8,16 @@ import {sizes} from "./other_settings";
  * @type {PerspectiveCamera}
  */
 const CAMERA = new THREE.PerspectiveCamera(
-    16,
+    75,
     sizes.width / sizes.height,
-    0.08,
+    0.1,
     100,
 );
 
 CAMERA.position.set(
-    3.5,
-    2.4,
-    4
+    7,
+    2,
+    8
 );
 
 export {CAMERA};

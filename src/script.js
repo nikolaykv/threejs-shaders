@@ -10,42 +10,39 @@ import * as THREE from 'three';
 
 import {
     AXES_HELPER,
-    GRID_HELPER,
 } from "./parts/helpers";
 
 import {
     AMBIENT_LIGHT,
-    DIRECTIONAL_LIGHT,
+    MOON_LIGHT,
 } from "./parts/light_settings";
 
 import {
-    CUBE_MESH,
-} from "./objects/meshes";
+    HOUSE_GROUP
+} from "./scene_groups/house/house";
 
+import {
+    GRAVES_GROUP
+} from "./scene_groups/graves/graves";
 
 /**
  * ============================
  */
 import './style.css';
 
-import {GUI} from "./parts/dat_gui_settings";
-
-// Сгруппировать элементы сцены
-const GROUP = new THREE.Group();
-
-// Добавить все вспомогательные оси и сетку
-GROUP.add(
-    AXES_HELPER,
-    GRID_HELPER,
-
-    CUBE_MESH,
-
-    AMBIENT_LIGHT,
-    DIRECTIONAL_LIGHT,
-);
+// import {GUI} from "./parts/dat_gui_settings";
 
 // Добавить всю сцену в группу
-SCENE.add(GROUP);
+SCENE.add(
+    HOUSE_GROUP,
+
+    GRAVES_GROUP,
+
+    AXES_HELPER,
+
+    AMBIENT_LIGHT,
+    MOON_LIGHT,
+);
 
 
 /**
@@ -70,6 +67,7 @@ const RENDER = new THREE.WebGLRenderer({
     canvas: CANVAS
 });
 
+RENDER.setClearColor('#262837');
 
 RENDER.setSize(sizes.width, sizes.height)
 RENDER.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -86,4 +84,4 @@ if (typeof __THREE_DEVTOOLS__ !== 'undefined') {
     __THREE_DEVTOOLS__.dispatchEvent(new CustomEvent('observe', {detail: RENDER}));
 }
 
-export {RENDER, ORBIT_CONTROLS, GROUP};
+export {RENDER, ORBIT_CONTROLS};
