@@ -50,6 +50,7 @@ for (let i = 0; i < 50; i++) {
     // Для того чтобы надгробия не располагались на идеальном круге
     GRAVE.rotation.z = (Math.random() - 0.5) * 0.4;
     GRAVE.rotation.y = (Math.random() - 0.5) * 0.4;
+    GRAVE.castShadow = true;
 
     // Добавляем эелементы в группу
     GRAVES_GROUP.add(GRAVE);

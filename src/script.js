@@ -16,11 +16,17 @@ import {
 
 import {
     HOUSE_GROUP
-} from "./scene_groups/house/house";
+} from "./groups/house/house";
 
 import {
     GRAVES_GROUP
-} from "./scene_groups/graves/graves";
+} from "./groups/graves/graves";
+
+import {
+    GHOST_ONE,
+    GHOST_TWO,
+    GHOST_THREE
+} from "./parts/ghosts";
 
 /**
  * ============================
@@ -35,10 +41,14 @@ SCENE.add(
 
     GRAVES_GROUP,
 
-    AXES_HELPER,
+    //AXES_HELPER,
 
     AMBIENT_LIGHT,
     MOON_LIGHT,
+
+    GHOST_ONE,
+    GHOST_TWO,
+    GHOST_THREE
 );
 
 
@@ -57,6 +67,7 @@ const ORBIT_CONTROLS = new OrbitControls(
     CAMERA,
     CANVAS
 );
+
 ORBIT_CONTROLS.enableDamping = true;
 
 
@@ -74,6 +85,11 @@ const RENDER = new THREE.WebGLRenderer(
 RENDER.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 RENDER.setSize(sizes.width, sizes.height);
 RENDER.setClearColor('#262837');
+
+// Включить тени
+RENDER.shadowMap.enabled = true;
+// Настройка карты теней
+RENDER.shadowMap.type = THREE.PCFSoftShadowMap;
 
 /**
  * Анимация сцены

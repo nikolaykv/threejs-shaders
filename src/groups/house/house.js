@@ -12,7 +12,21 @@ import {
     DOOR_NORMAL_TEXTURE,
     DOOR_METALNESS_TEXTURE,
     DOOR_ROUGHNESS_TEXTURE
-} from "../../parts/door_textures";
+} from "../../textures/door";
+
+import {
+    BRICKS_COLOR_TEXTURE,
+    BRICKS_AMBIENT_OCCLUSION_TEXTURE,
+    BRICKS_NORMAL_TEXTURE,
+    BRICKS_ROUGHNESS_TEXTURE
+} from "../../textures/wall";
+
+import {
+    GRASS_COLOR_TEXTURE,
+    GRASS_AMBIENT_OCCLUSION_TEXTURE,
+    GRASS_NORMAL_TEXTURE,
+    GRASS_ROUGHNESS_TEXTURE
+} from "../../textures/grass";
 
 /**
  * Земля
@@ -25,12 +39,24 @@ const FLOOR = new THREE.Mesh(
     ),
     new THREE.MeshStandardMaterial(
         {
-            color: 'darkseagreen'
+            map: GRASS_COLOR_TEXTURE,
+            aoMap: GRASS_AMBIENT_OCCLUSION_TEXTURE,
+            normalMap: GRASS_NORMAL_TEXTURE,
+            roughnessMap: GRASS_ROUGHNESS_TEXTURE
         }
     )
 );
 FLOOR.rotation.x = -Math.PI * 0.5;
 FLOOR.rotation.y = 0;
+
+FLOOR.geometry.setAttribute(
+    'uv2',
+    new THREE.Float32BufferAttribute(
+        FLOOR.geometry.attributes.uv.array,
+        2
+    )
+);
+FLOOR.receiveShadow = true;
 
 /**
  * Стены
@@ -44,11 +70,25 @@ const WALLS = new THREE.Mesh(
     ),
     new THREE.MeshStandardMaterial(
         {
-            color: '#ac8e82'
+            color: '#ac8e82',
+            map: BRICKS_COLOR_TEXTURE,
+            aoMap: BRICKS_AMBIENT_OCCLUSION_TEXTURE,
+            normalMap: BRICKS_NORMAL_TEXTURE,
+            roughnessMap: BRICKS_ROUGHNESS_TEXTURE
         }
     )
 );
 WALLS.position.y = 1.25;
+
+WALLS.geometry.setAttribute(
+    'uv2',
+    new THREE.Float32BufferAttribute(
+        WALLS.geometry.attributes.uv.array,
+        2
+    )
+);
+
+WALLS.castShadow = true;
 
 /**
  * Крыша
@@ -140,6 +180,7 @@ BUSH_ONE.position.set(
     0.2,
     2.2
 );
+BUSH_ONE.castShadow = true;
 
 const BUSH_TWO = new THREE.Mesh(
     BUSH_GEOMETRY,
@@ -155,6 +196,7 @@ BUSH_TWO.position.set(
     0.1,
     2.1
 );
+BUSH_TWO.castShadow = true;
 
 const BUSH_THREE = new THREE.Mesh(
     BUSH_GEOMETRY,
@@ -170,6 +212,7 @@ BUSH_THREE.position.set(
     0.1,
     2.2
 );
+BUSH_THREE.castShadow = true;
 
 const BUSH_FOUR = new THREE.Mesh(
     BUSH_GEOMETRY,
@@ -185,6 +228,7 @@ BUSH_FOUR.position.set(
     0.05,
     2.6
 );
+BUSH_FOUR.castShadow = true;
 
 /**
  * Группа дла элементов сцены
