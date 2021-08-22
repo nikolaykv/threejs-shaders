@@ -16,16 +16,10 @@ import {
 import {
     AMBIENT_LIGHT,
     DIRECTIONAL_LIGHT,
-    HEMISPHERE_LIGHT,
-    POINT_LIGHT,
-    RECT_AREA_LIGHT,
-    SPOT_LIGHT
 } from "./parts/light_settings";
 
 import {
     CUBE_MESH,
-    SPHERE_MESH,
-    TORUS_MESH
 } from "./objects/meshes";
 
 
@@ -45,17 +39,9 @@ GROUP.add(
     GRID_HELPER,
 
     CUBE_MESH,
-    SPHERE_MESH,
-    TORUS_MESH,
 
     AMBIENT_LIGHT,
     DIRECTIONAL_LIGHT,
-    HEMISPHERE_LIGHT,
-    POINT_LIGHT,
-    RECT_AREA_LIGHT,
-    SPOT_LIGHT,
-
-    GUI
 );
 
 // Добавить всю сцену в группу
