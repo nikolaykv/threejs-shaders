@@ -13,5 +13,7 @@ let sizes = {
  */
 const CANVAS = document.querySelector('canvas.webgl');
 
-
-export {sizes, CANVAS};
+export {
+    sizes,
+    CANVAS
+};

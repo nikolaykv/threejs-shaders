@@ -28,14 +28,6 @@ module.exports = {
     {
         rules:
         [
-            // glb, gltf and other
-            {
-                test: /\.(png|svg|jpe?g|bin|gif|glb|gltf)$/,
-                loader: 'file-loader',
-                options: {
-                    esModule: false
-                }
-            },
             // HTML
             {
                 test: /\.(html)$/,

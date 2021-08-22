@@ -1,7 +1,6 @@
 import * as THREE from "three";
 import {sizes} from "./other_settings";
 
-
 /**
  * Настройка камеры
  *
@@ -15,9 +14,9 @@ const CAMERA = new THREE.PerspectiveCamera(
 );
 
 CAMERA.position.set(
-    7,
+    4,
     2,
-    8
+    5
 );
 
 export {CAMERA};

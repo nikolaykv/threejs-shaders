@@ -1,6 +1,3 @@
-/**
- * ============================
- */
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
 import {screenResize, animateScene} from "./parts/functions";
 import {sizes, CANVAS} from "./parts/other_settings";
@@ -32,7 +29,7 @@ import './style.css';
 
 // import {GUI} from "./parts/dat_gui_settings";
 
-// Добавить всю сцену в группу
+// Добавляем в сцену элементы
 SCENE.add(
     HOUSE_GROUP,
 
@@ -54,24 +51,29 @@ screenResize();
 
 /**
  * Использование возможностей OrbitControls
+ * @type {OrbitControls}
  */
-const ORBIT_CONTROLS = new OrbitControls(CAMERA, CANVAS)
+const ORBIT_CONTROLS = new OrbitControls(
+    CAMERA,
+    CANVAS
+);
 ORBIT_CONTROLS.enableDamping = true;
 
 
 /**
  * Renderer
+ * @type {WebGLRenderer}
  */
-const RENDER = new THREE.WebGLRenderer({
-    antialias: true,
-    canvas: CANVAS
-});
+const RENDER = new THREE.WebGLRenderer(
+    {
+        antialias: true,
+        canvas: CANVAS
+    }
+);
 
-RENDER.setClearColor('#262837');
-
-RENDER.setSize(sizes.width, sizes.height)
 RENDER.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
+RENDER.setSize(sizes.width, sizes.height);
+RENDER.setClearColor('#262837');
 
 /**
  * Анимация сцены
@@ -84,4 +86,7 @@ if (typeof __THREE_DEVTOOLS__ !== 'undefined') {
     __THREE_DEVTOOLS__.dispatchEvent(new CustomEvent('observe', {detail: RENDER}));
 }
 
-export {RENDER, ORBIT_CONTROLS};
+export {
+    RENDER,
+    ORBIT_CONTROLS
+};

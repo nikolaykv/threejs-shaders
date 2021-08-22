@@ -34,4 +34,7 @@ function animateScene() {
     window.requestAnimationFrame(animateScene);
 }
 
-export {screenResize, animateScene};
+export {
+    screenResize,
+    animateScene
+};

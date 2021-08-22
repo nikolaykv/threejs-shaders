@@ -1,8 +1,14 @@
 import * as THREE from 'three';
 
+/**
+ * @type {Scene}
+ */
 const SCENE = new THREE.Scene();
 
-// Туман
+/**
+ * Туман
+ * @type {Fog}
+ */
 const FOG = new THREE.Fog(
     '#262837',
     1,
@@ -10,4 +16,6 @@ const FOG = new THREE.Fog(
 );
 SCENE.fog = FOG;
 
-export {SCENE};
+export {
+    SCENE
+};
