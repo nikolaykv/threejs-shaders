@@ -5,7 +5,6 @@ import {AMBIENT_LIGHT,} from "./parts/light_settings";
 import {sizes, CANVAS} from "./parts/other_settings";
 import {CAMERA} from "./parts/camera_settings";
 import {SCENE} from "./parts/scene_settings";
-import {PARTICLES} from "./objects/meshes";
 import * as THREE from 'three';
 
 /**
@@ -14,13 +13,13 @@ import * as THREE from 'three';
 import './style.css';
 
 import {GUI} from "./parts/dat_gui_settings";
+import {generateGalaxy, parameters} from "./objects/meshes";
 
 // Добавляем в сцену элементы
 SCENE.add(
     AXES_HELPER,
     AMBIENT_LIGHT,
     GRID_HELPER,
-    PARTICLES
 );
 
 
@@ -56,6 +55,8 @@ const RENDER = new THREE.WebGLRenderer(
 
 RENDER.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 RENDER.setSize(sizes.width, sizes.height);
+
+generateGalaxy();
 
 /**
  * Анимация сцены

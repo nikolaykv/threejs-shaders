@@ -15,15 +15,7 @@ let sizes = {
  */
 const CANVAS = document.querySelector('canvas.webgl');
 
-/**
- * Объект three.js для учета времени
- * @type {Clock}
- */
-const CLOCK = new THREE.Clock();
-
-
 export {
     sizes,
-    CANVAS,
-    CLOCK
+    CANVAS
 };
