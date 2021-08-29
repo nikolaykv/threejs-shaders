@@ -1,5 +1,5 @@
 # Three.js Starter
-Демонстрация [результата](https://nikolaykv.github.io/Haunted-house/) 
+Демонстрация [результата](https://nikolaykv.github.io/galaxy-generator/) 
 
 ## Установка
 Скачай [Node.js](https://nodejs.org/en/download/).
