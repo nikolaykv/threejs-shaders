@@ -1,54 +1,26 @@
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
 import {screenResize, animateScene} from "./parts/functions";
+import {AXES_HELPER, GRID_HELPER} from "./parts/helpers";
+import {AMBIENT_LIGHT,} from "./parts/light_settings";
 import {sizes, CANVAS} from "./parts/other_settings";
 import {CAMERA} from "./parts/camera_settings";
 import {SCENE} from "./parts/scene_settings";
+import {CUBE} from "./objects/meshes";
 import * as THREE from 'three';
-
-import {
-    AXES_HELPER,
-} from "./parts/helpers";
-
-import {
-    AMBIENT_LIGHT,
-    MOON_LIGHT,
-} from "./parts/light_settings";
-
-import {
-    HOUSE_GROUP
-} from "./groups/house/house";
-
-import {
-    GRAVES_GROUP
-} from "./groups/graves/graves";
-
-import {
-    GHOST_ONE,
-    GHOST_TWO,
-    GHOST_THREE
-} from "./parts/ghosts";
 
 /**
  * ============================
  */
 import './style.css';
 
-// import {GUI} from "./parts/dat_gui_settings";
+import {GUI} from "./parts/dat_gui_settings";
 
 // Добавляем в сцену элементы
 SCENE.add(
-    HOUSE_GROUP,
-
-    GRAVES_GROUP,
-
-    //AXES_HELPER,
-
+    AXES_HELPER,
     AMBIENT_LIGHT,
-    MOON_LIGHT,
-
-    GHOST_ONE,
-    GHOST_TWO,
-    GHOST_THREE
+    GRID_HELPER,
+    CUBE
 );
 
 
@@ -84,12 +56,6 @@ const RENDER = new THREE.WebGLRenderer(
 
 RENDER.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 RENDER.setSize(sizes.width, sizes.height);
-RENDER.setClearColor('#262837');
-
-// Включить тени
-RENDER.shadowMap.enabled = true;
-// Настройка карты теней
-RENDER.shadowMap.type = THREE.PCFSoftShadowMap;
 
 /**
  * Анимация сцены
