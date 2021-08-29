@@ -5,7 +5,7 @@ import {AMBIENT_LIGHT,} from "./parts/light_settings";
 import {sizes, CANVAS} from "./parts/other_settings";
 import {CAMERA} from "./parts/camera_settings";
 import {SCENE} from "./parts/scene_settings";
-import {CUBE} from "./objects/meshes";
+import {PARTICLES} from "./objects/meshes";
 import * as THREE from 'three';
 
 /**
@@ -20,7 +20,7 @@ SCENE.add(
     AXES_HELPER,
     AMBIENT_LIGHT,
     GRID_HELPER,
-    CUBE
+    PARTICLES
 );
 
 

@@ -1,7 +1,6 @@
 import {ORBIT_CONTROLS, RENDER} from "../script";
 import {CAMERA} from "./camera_settings";
 import {SCENE} from "./scene_settings";
-import {sizes} from "./other_settings";
 
 /**
  * Логика изменения холста
