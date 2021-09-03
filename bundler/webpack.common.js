@@ -20,7 +20,8 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '../src/index.html'),
-            minify: true
+            favicon:  path.resolve(__dirname, '../src/favicon.png'),
+            minify: false
         }),
         new MiniCSSExtractPlugin()
     ],
@@ -82,7 +83,7 @@ module.exports = {
                         }
                     }
                 ]
-            }
+            },
         ]
     }
 }
