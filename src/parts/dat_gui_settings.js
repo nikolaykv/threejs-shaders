@@ -76,7 +76,7 @@ galaxy_settings.addColor(
 galaxy_settings.addColor(
     parameters,
     'outsideColor'
-).name('Внутренний цвет частиц').onFinishChange(generateGalaxy);
+).name('Наружный цвет частиц').onFinishChange(generateGalaxy);
 
 
 galaxy_settings.open();
