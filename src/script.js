@@ -13,7 +13,6 @@ import * as THREE from 'three';
 import './style.css';
 
 import {GUI} from "./parts/dat_gui_settings";
-import {generateGalaxy, parameters} from "./objects/meshes";
 
 // Добавляем в сцену элементы
 SCENE.add(
@@ -55,8 +54,6 @@ const RENDER = new THREE.WebGLRenderer(
 
 RENDER.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 RENDER.setSize(sizes.width, sizes.height);
-
-generateGalaxy();
 
 /**
  * Анимация сцены
