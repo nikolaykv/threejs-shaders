@@ -1,4 +1,5 @@
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
+import {SPHERE_ONE, SPHERE_TWO, SPHERE_THREE} from "./objects/meshes";
 import {screenResize, animateScene} from "./parts/functions";
 import {AXES_HELPER, GRID_HELPER} from "./parts/helpers";
 import {AMBIENT_LIGHT,} from "./parts/light_settings";
@@ -16,9 +17,13 @@ import {GUI} from "./parts/dat_gui_settings";
 
 // Добавляем в сцену элементы
 SCENE.add(
-    AXES_HELPER,
+    //AXES_HELPER,
     AMBIENT_LIGHT,
-    GRID_HELPER,
+    //GRID_HELPER,
+
+    SPHERE_ONE,
+    SPHERE_TWO,
+    SPHERE_THREE
 );
 
 
