@@ -1,7 +1,9 @@
 import {ORBIT_CONTROLS, RENDER} from "../script";
 import {CAMERA} from "./camera_settings";
 import {SCENE} from "./scene_settings";
-import * as THREE from 'three';
+import {CLOCK} from "./other_settings";
+import {SPHERE_BODY, WORLD} from "./physics";
+import {SPHERE} from "../objects/meshes";
 
 /**
  * Логика изменения холста
@@ -25,11 +27,20 @@ function screenResize() {
 /**
  * Анимация сцены
  */
-function animateScene() {
 
-    new THREE.Clock().getElapsedTime();
+let oldElapsedTime = 0;
+
+function animateScene() {
     ORBIT_CONTROLS.update();
     RENDER.render(SCENE, CAMERA);
+
+    const ELAPSED_TIME = CLOCK.getElapsedTime();
+    const DELTA_TIME = ELAPSED_TIME - oldElapsedTime;
+    oldElapsedTime = ELAPSED_TIME;
+
+    WORLD.step(1/60, DELTA_TIME, 3);
+
+    SPHERE.position.copy(SPHERE_BODY.position)
 
     window.requestAnimationFrame(animateScene);
 }

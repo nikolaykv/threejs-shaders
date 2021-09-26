@@ -19,7 +19,7 @@ import {GUI} from "./parts/dat_gui_settings";
 SCENE.add(
     AMBIENT_LIGHT,
     DIRECTIONAL_LIGHT,
-    
+
     //AXES_HELPER,
     //GRID_HELPER,
 

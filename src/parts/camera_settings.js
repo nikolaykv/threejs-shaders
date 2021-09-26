@@ -14,9 +14,9 @@ const CAMERA = new THREE.PerspectiveCamera(
 );
 
 CAMERA.position.set(
-    -3,
-    3,
-    3
+    -2,
+    1,
+    1
 );
 
 export {CAMERA};
