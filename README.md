@@ -1,5 +1,5 @@
 # Three.js Starter
-Демонстрация [результата](https://nikolaykv.github.io/galaxy-generator/) 
+Демонстрация [результата](https://nikolaykv.github.io/threejs-object-physics/) 
 
 ## Установка
 Скачай [Node.js](https://nodejs.org/en/download/).
