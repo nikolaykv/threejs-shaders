@@ -1,14 +1,14 @@
 import * as THREE from 'three';
 
-const cubeTextureLoader = new THREE.CubeTextureLoader()
+//const cubeTextureLoader = new THREE.CubeTextureLoader();
 
 const ENVIRONMENT_MAP_TEXTURE = new THREE.CubeTextureLoader().load([
-    '/textures/environmentMaps/0/px.png',
-    '/textures/environmentMaps/0/nx.png',
-    '/textures/environmentMaps/0/py.png',
-    '/textures/environmentMaps/0/ny.png',
-    '/textures/environmentMaps/0/pz.png',
-    '/textures/environmentMaps/0/nz.png'
+    '/textures/environment/px.png',
+    '/textures/environment/nx.png',
+    '/textures/environment/py.png',
+    '/textures/environment/ny.png',
+    '/textures/environment/pz.png',
+    '/textures/environment/nz.png'
 ]);
 
 export {ENVIRONMENT_MAP_TEXTURE}
