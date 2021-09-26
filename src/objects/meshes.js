@@ -1,17 +1,33 @@
 import {ENVIRONMENT_MAP_TEXTURE} from "../parts/textures";
 import * as THREE from 'three';
 
-const SPHERE = new THREE.Mesh(
-    new THREE.SphereBufferGeometry(0.5, 32, 32),
-    new THREE.MeshStandardMaterial({
-        metalness: 0.3,
-        roughness: 0.4,
-        envMap: ENVIRONMENT_MAP_TEXTURE
-    })
+/**
+ * =====================================================================
+ * Геометрия сферы
+ * @type {SphereGeometry}
+ */
+const SPHERE_GEOMETRY = new THREE.SphereBufferGeometry(
+    1,
+    50,
+    50
 );
-SPHERE.castShadow = true;
-SPHERE.position.y = 0.5;
 
+/**
+ * =====================================================================
+ * Материал сетки сферы
+ * @type {MeshStandardMaterial}
+ */
+const SPHERE_MATERIAL = new THREE.MeshStandardMaterial({
+    metalness: 0.3,
+    roughness: 0.4,
+    envMap: ENVIRONMENT_MAP_TEXTURE
+});
+
+/**
+ * =====================================================================
+ * Меш "земли" и настройки
+ * @type {Mesh}
+ */
 const FLOOR = new THREE.Mesh(
     new THREE.PlaneBufferGeometry(10, 10),
     new THREE.MeshStandardMaterial({
@@ -20,8 +36,12 @@ const FLOOR = new THREE.Mesh(
         roughness: 0.4,
         envMap: ENVIRONMENT_MAP_TEXTURE
     })
-)
-FLOOR.receiveShadow = true
-FLOOR.rotation.x = - Math.PI * 0.5
+);
+FLOOR.receiveShadow = true;
+FLOOR.rotation.x = - Math.PI * 0.5;
 
-export {SPHERE, FLOOR};
+export {
+    FLOOR,
+    SPHERE_MATERIAL,
+    SPHERE_GEOMETRY
+};

@@ -1,40 +1,45 @@
 import CANNON from 'cannon';
 
-const WORLD = new CANNON.World();
-
 /**
- * Сила гравитациям по осям, то есть скорость падения
+ * =====================================================================
+ * Инициализация физического мира
+ * и сила гравитациям по осям, то есть скорость падения
+ * предметов
  */
+const WORLD = new CANNON.World();
 WORLD.gravity.set(0, -9.82, 0);
 
-// Материалы тел
+/**
+ * =====================================================================
+ *  Физические материалы тел
+ */
 const CONCRETE_MATERIAL = new CANNON.Material('concrete');
 const PLASTIC_MATERIAL = new CANNON.Material('plastic');
 
-// Физика шара
-const SPHERE_BODY = new CANNON.Body({
-    material: PLASTIC_MATERIAL,
-    mass: 1,
-    position: new CANNON.Vec3(0, 3, 0),
-    shape: new CANNON.Sphere(0.5)
-});
-WORLD.addBody(SPHERE_BODY);
-
-// Статичная земля
+/**
+ * =====================================================================
+ * Статичная "земля"
+ */
 const FLOOR_BODY = new CANNON.Body({
     material: CONCRETE_MATERIAL,
     mass: 0,
-    shape: new CANNON.Box(new CANNON.Vec3(5, 5, 0.1))
+    shape: new CANNON.Box(new CANNON.Vec3(5, 5, 0.00001))
 });
 
-// Поворот физического тела, относительно камеры
+/**
+ * =====================================================================
+ * Поворот "статичной земли", относительно камеры
+ */
 FLOOR_BODY.quaternion.setFromAxisAngle(
     new CANNON.Vec3(-1, 0, 0),
     Math.PI * 0.5
 );
 WORLD.addBody(FLOOR_BODY);
 
-// Физика материалов на границе их столкновения
+/**
+ * =====================================================================
+ * Физика материалов на границе их столкновения
+ */
 const CONCRETE_PLASTIC_CONTACT_MATERIAL = new CANNON.ContactMaterial(
     CONCRETE_MATERIAL,
     PLASTIC_MATERIAL,
@@ -45,10 +50,4 @@ const CONCRETE_PLASTIC_CONTACT_MATERIAL = new CANNON.ContactMaterial(
 );
 WORLD.addContactMaterial(CONCRETE_PLASTIC_CONTACT_MATERIAL);
 
-// Пример применения физических сил
-SPHERE_BODY.applyLocalForce(
-    new CANNON.Vec3(150, 0, 0),
-    new CANNON.Vec3(0, 0, 0)
-);
-
-export {WORLD, SPHERE_BODY};
+export {WORLD, PLASTIC_MATERIAL};
