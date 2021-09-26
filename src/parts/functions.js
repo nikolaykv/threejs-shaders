@@ -2,8 +2,8 @@ import {ORBIT_CONTROLS, RENDER} from "../script";
 import {CAMERA} from "./camera_settings";
 import {SCENE} from "./scene_settings";
 import {CLOCK} from "./other_settings";
-import {SPHERE_BODY, WORLD} from "./physics";
-import {SPHERE} from "../objects/meshes";
+import {FLOOR_BODY, SPHERE_BODY, WORLD} from "./physics";
+import {FLOOR, SPHERE} from "../objects/meshes";
 
 /**
  * Логика изменения холста
@@ -40,7 +40,7 @@ function animateScene() {
 
     WORLD.step(1/60, DELTA_TIME, 3);
 
-    SPHERE.position.copy(SPHERE_BODY.position)
+    SPHERE.position.copy(SPHERE_BODY.position);
 
     window.requestAnimationFrame(animateScene);
 }

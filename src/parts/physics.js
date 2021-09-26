@@ -24,7 +24,7 @@ WORLD.addBody(SPHERE_BODY);
 const FLOOR_BODY = new CANNON.Body({
     material: CONCRETE_MATERIAL,
     mass: 0,
-    shape: new CANNON.Plane(),
+    shape: new CANNON.Box(new CANNON.Vec3(5, 5, 0.1))
 });
 
 // Поворот физического тела, относительно камеры
@@ -32,7 +32,7 @@ FLOOR_BODY.quaternion.setFromAxisAngle(
     new CANNON.Vec3(-1, 0, 0),
     Math.PI * 0.5
 );
-WORLD.addBody(FLOOR_BODY)
+WORLD.addBody(FLOOR_BODY);
 
 // Физика материалов на границе их столкновения
 const CONCRETE_PLASTIC_CONTACT_MATERIAL = new CANNON.ContactMaterial(
@@ -45,4 +45,10 @@ const CONCRETE_PLASTIC_CONTACT_MATERIAL = new CANNON.ContactMaterial(
 );
 WORLD.addContactMaterial(CONCRETE_PLASTIC_CONTACT_MATERIAL);
 
-export {WORLD, SPHERE_BODY}
+// Пример применения физических сил
+SPHERE_BODY.applyLocalForce(
+    new CANNON.Vec3(150, 0, 0),
+    new CANNON.Vec3(0, 0, 0)
+);
+
+export {WORLD, SPHERE_BODY};
