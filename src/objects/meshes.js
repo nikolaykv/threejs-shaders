@@ -1,4 +1,3 @@
-import {ENVIRONMENT_MAP_TEXTURE} from "../parts/textures";
 import * as THREE from 'three';
 
 /**
@@ -20,7 +19,6 @@ const SPHERE_GEOMETRY = new THREE.SphereBufferGeometry(
 const SPHERE_MATERIAL = new THREE.MeshStandardMaterial({
     metalness: 0.3,
     roughness: 0.4,
-    envMap: ENVIRONMENT_MAP_TEXTURE
 });
 
 /**
@@ -42,7 +40,6 @@ const BOX_GEOMETRY = new THREE.BoxBufferGeometry(
 const BOX_MATERIAL = new THREE.MeshStandardMaterial({
     metalness: 0.3,
     roughness: 0.4,
-    envMap: ENVIRONMENT_MAP_TEXTURE
 });
 
 /**
@@ -56,7 +53,6 @@ const FLOOR = new THREE.Mesh(
         color: '#777777',
         metalness: 0.3,
         roughness: 0.4,
-        envMap: ENVIRONMENT_MAP_TEXTURE
     })
 );
 FLOOR.receiveShadow = true;
