@@ -121,10 +121,12 @@ animateScene();
  * =====================================================================
  * Отладка через экспериментальное расширение Google Chrome
  */
+/*
 if (typeof __THREE_DEVTOOLS__ !== 'undefined') {
     __THREE_DEVTOOLS__.dispatchEvent(new CustomEvent('observe', {detail: SCENE}));
     __THREE_DEVTOOLS__.dispatchEvent(new CustomEvent('observe', {detail: RENDER}));
 }
+*/
 
 export {
     RENDER,
