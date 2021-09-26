@@ -25,7 +25,29 @@ const SPHERE_MATERIAL = new THREE.MeshStandardMaterial({
 
 /**
  * =====================================================================
- * Меш "земли" и настройки
+ * Геометрия куба
+ * @type {BoxGeometry}
+ */
+const BOX_GEOMETRY = new THREE.BoxBufferGeometry(
+    1,
+    1,
+    1
+);
+
+/**
+ * =====================================================================
+ * Материал сетки куба
+ * @type {MeshStandardMaterial}
+ */
+const BOX_MATERIAL = new THREE.MeshStandardMaterial({
+    metalness: 0.3,
+    roughness: 0.4,
+    envMap: ENVIRONMENT_MAP_TEXTURE
+});
+
+/**
+ * =====================================================================
+ * Меш "земли" и его настройки
  * @type {Mesh}
  */
 const FLOOR = new THREE.Mesh(
@@ -43,5 +65,7 @@ FLOOR.rotation.x = - Math.PI * 0.5;
 export {
     FLOOR,
     SPHERE_MATERIAL,
-    SPHERE_GEOMETRY
+    SPHERE_GEOMETRY,
+    BOX_MATERIAL,
+    BOX_GEOMETRY
 };

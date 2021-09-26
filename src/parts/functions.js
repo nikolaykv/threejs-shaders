@@ -1,5 +1,4 @@
-import {SPHERE_GEOMETRY, SPHERE_MATERIAL} from "../objects/meshes";
-import {ENVIRONMENT_MAP_TEXTURE} from "./textures";
+import {SPHERE_GEOMETRY, SPHERE_MATERIAL, BOX_MATERIAL, BOX_GEOMETRY} from "../objects/meshes";
 import {ORBIT_CONTROLS, RENDER} from "../script";
 import {PLASTIC_MATERIAL} from "./physics";
 import {CAMERA} from "./camera_settings";
@@ -73,6 +72,38 @@ const CREATE_SPHERE = function (radius, position) {
 
 /**
  * =====================================================================
+ * Общая функция создания сетки и физического тела куба
+ *
+ * @param width
+ * @param height
+ * @param depth
+ * @param position
+ * @constructor
+ */
+const CREATE_BOX = function (width, height, depth, position) {
+    const MESH = new THREE.Mesh(BOX_GEOMETRY, BOX_MATERIAL);
+    MESH.scale.set(width, height, depth);
+    MESH.castShadow = true;
+    MESH.position.copy(position);
+    SCENE.add(MESH);
+
+    const BODY = new CANNON.Body({
+        mass: 1,
+        position: new CANNON.Vec3(0, 3, 0),
+        shape: new CANNON.Box(new CANNON.Vec3(width * 0.5, height * 0.5, depth * 0.5)),
+        material: PLASTIC_MATERIAL
+    });
+    BODY.position.copy(position);
+    WORLD.addBody(BODY);
+
+    OBJECTS_TO_UPDATE.push({
+        mesh: MESH,
+        body: BODY
+    });
+}
+
+/**
+ * =====================================================================
  * Анимация сцены
  */
 let oldElapsedTime = 0;
@@ -89,6 +120,7 @@ function animateScene() {
 
     for (const OBJECT of OBJECTS_TO_UPDATE) {
         OBJECT.mesh.position.copy(OBJECT.body.position);
+        OBJECT.mesh.quaternion.copy(OBJECT.body.quaternion);
     }
 
     window.requestAnimationFrame(animateScene);
@@ -97,5 +129,6 @@ function animateScene() {
 export {
     screenResize,
     animateScene,
-    CREATE_SPHERE
+    CREATE_SPHERE,
+    CREATE_BOX
 };
