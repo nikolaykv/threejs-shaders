@@ -61,6 +61,7 @@ const CREATE_SPHERE = function (radius, position) {
         material: PLASTIC_MATERIAL
     })
     BODY.position.copy(position);
+    BODY.addEventListener('collide', PLAY_HIT_SOUND);
     WORLD.addBody(BODY);
 
     // копируем объекты в вспомогательный массив
@@ -94,12 +95,35 @@ const CREATE_BOX = function (width, height, depth, position) {
         material: PLASTIC_MATERIAL
     });
     BODY.position.copy(position);
+    BODY.addEventListener('collide', PLAY_HIT_SOUND);
     WORLD.addBody(BODY);
 
     OBJECTS_TO_UPDATE.push({
         mesh: MESH,
         body: BODY
     });
+}
+
+/**
+ * =====================================================================
+ * Звук столкновений
+ * @type {HTMLAudioElement}
+ */
+let hitSound = new Audio('/sounds/hit.mp3');
+
+/**
+ * =====================================================================
+ * Загружает звук и воспроизводит его по событию - столкновение физических объектов
+ * @param collision
+ * @constructor
+ */
+const PLAY_HIT_SOUND = function (collision) {
+    let impactStrength = collision.contact.getImpactVelocityAlongNormal();
+    if (impactStrength > 1.5) {
+        hitSound.volume = Math.random();
+        hitSound.currentTime = 0;
+        hitSound.play();
+    }
 }
 
 /**
