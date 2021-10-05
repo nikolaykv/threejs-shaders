@@ -154,5 +154,7 @@ export {
     screenResize,
     animateScene,
     CREATE_SPHERE,
-    CREATE_BOX
+    CREATE_BOX,
+    OBJECTS_TO_UPDATE,
+    PLAY_HIT_SOUND
 };

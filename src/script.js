@@ -1,6 +1,6 @@
+import {screenResize, animateScene, OBJECTS_TO_UPDATE, PLAY_HIT_SOUND} from "./parts/functions";
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 import {AMBIENT_LIGHT, DIRECTIONAL_LIGHT} from "./parts/light_settings";
-import {screenResize, animateScene} from "./parts/functions";
 import {CREATE_SPHERE, CREATE_BOX} from "./parts/functions";
 import {AXES_HELPER, GRID_HELPER} from "./parts/helpers";
 import {sizes, CANVAS} from "./parts/other_settings";
@@ -10,6 +10,7 @@ import {SCENE} from "./parts/scene_settings";
 import {FLOOR} from "./objects/meshes";
 import * as THREE from 'three';
 import './style.css';
+import {WORLD} from "./parts/physics";
 
 // Добавляем в сцену элементы
 SCENE.add(
@@ -62,8 +63,6 @@ RENDER.setSize(sizes.width, sizes.height);
  * Общая функция создания сетки и физического тела сферы,
  * обёрнутая в пустой объект, для последующей работы с ним dat.gui
  */
-//CREATE_SPHERE(0.5, { x: 0, y: 3, z: 0 });
-
 const DEBUG_OBJECTS_SPHERE = {
     createSphere: function () {
         {
@@ -87,8 +86,6 @@ GUI.add(DEBUG_OBJECTS_SPHERE, 'createSphere')
  * Общая функция создания сетки и физического тела куба,
  * обёрнутая в пустой объект, для последующей работы с ним dat.gui
  */
-CREATE_BOX(1, 1.5, 2, { x: 0, y: 3, z: 0 });
-
 const DEBUG_OBJECTS_BOX = {
     createBox: function () {
         {
@@ -109,7 +106,32 @@ const DEBUG_OBJECTS_BOX = {
 GUI.add(DEBUG_OBJECTS_BOX, 'createBox')
     .name('Добавить куб в сцену');
 
+CREATE_BOX(
+    1, 1.5, 2,
+    { x: 0, y: 3, z: 0 }
+);
 
+/**
+ * =====================================================================
+ * Удаление three.js и cannon.js объектов из сцены
+ * при помощи dat.gui
+ */
+DEBUG_OBJECTS_SPHERE.reset = function () {
+    {
+        // берём любую походящую константу, так как по итогу всё равно проходимся по всем объектам в цикле
+        for (const OBJECT of OBJECTS_TO_UPDATE) {
+            // Удалить обработчик на звук
+            OBJECT.body.removeEventListener('collide', PLAY_HIT_SOUND);
+            // Удаление физического тела объекта
+            WORLD.removeBody(OBJECT.body);
+            // Удаление mesh three.js объекта из сцены
+            SCENE.remove(OBJECT.mesh);
+        }
+    }
+}
+
+GUI.add(DEBUG_OBJECTS_SPHERE, 'reset')
+    .name('Удалить все объекты из сцены');
 
 /**
  * =====================================================================
