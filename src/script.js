@@ -116,10 +116,11 @@ CREATE_BOX(
  * Удаление three.js и cannon.js объектов из сцены
  * при помощи dat.gui
  */
+let OBJECTS = OBJECTS_TO_UPDATE;
 DEBUG_OBJECTS_SPHERE.reset = function () {
     {
         // берём любую походящую константу, так как по итогу всё равно проходимся по всем объектам в цикле
-        for (const OBJECT of OBJECTS_TO_UPDATE) {
+        for (const OBJECT of OBJECTS) {
             // Удалить обработчик на звук
             OBJECT.body.removeEventListener('collide', PLAY_HIT_SOUND);
             // Удаление физического тела объекта
