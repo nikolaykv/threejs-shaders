@@ -1,5 +1,5 @@
 # Three.js Starter
-Демонстрация [результата](https://nikolaykv.github.io/threejs-object-physics/) 
+Демонстрация [результата](https://nikolaykv.github.io/threejs-animated-gltf-model/) 
 
 ## Установка
 Скачай [Node.js](https://nodejs.org/en/download/).
