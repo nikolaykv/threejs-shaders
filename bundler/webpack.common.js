@@ -29,6 +29,13 @@ module.exports = {
     {
         rules:
         [
+            {
+                test: /\.(glb|gltf)$/,
+                loader: 'file-loader',
+                options: {
+                    esModule: false
+                }
+            },
             // HTML
             {
                 test: /\.(html)$/,

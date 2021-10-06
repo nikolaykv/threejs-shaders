@@ -1,3 +1,4 @@
+import foxModelPath from '../../static/models/Fox/glTF-Binary/Fox.glb';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {SCENE} from "../parts/scene_settings";
 import * as THREE from 'three';
@@ -7,7 +8,7 @@ const GLTF_LOADER = new GLTFLoader();
 let mixer = null;
 
 GLTF_LOADER.load(
-    '/models/Fox/glTF/Fox.gltf',
+    foxModelPath,
     function (gltf) {
         gltf.scene.scale.set(0.025, 0.025, 0.025);
         SCENE.add(gltf.scene);
