@@ -1,6 +1,7 @@
 import {ORBIT_CONTROLS, RENDER} from "../script";
 import {sizes, CLOCK} from "./other_settings";
 import {CAMERA} from "./camera_settings";
+import {mixer} from "../objects/models";
 import {SCENE} from "./scene_settings";
 /**
  * =====================================================================
@@ -35,6 +36,10 @@ function animateScene() {
     const ELAPSED_TIME = CLOCK.getElapsedTime();
     const DELTA_TIME = ELAPSED_TIME - previousTime;
     previousTime = ELAPSED_TIME;
+
+    if (mixer) {
+        mixer.update(DELTA_TIME);
+    }
 
     ORBIT_CONTROLS.update();
     RENDER.render(SCENE, CAMERA);

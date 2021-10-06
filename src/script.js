@@ -5,6 +5,7 @@ import {AXES_HELPER, GRID_HELPER} from "./parts/helpers";
 import {sizes, CANVAS} from "./parts/other_settings";
 import {CAMERA} from "./parts/camera_settings";
 import {GUI} from "./parts/dat_gui_settings";
+import {GLTF_LOADER} from "./objects/models";
 import {SCENE} from "./parts/scene_settings";
 import {FLOOR} from "./objects/meshes";
 import * as THREE from 'three';
