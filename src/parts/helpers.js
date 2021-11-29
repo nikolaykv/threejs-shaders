@@ -13,6 +13,7 @@ const GRID_HELPER = new THREE.GridHelper(
     10,
     'white',
 );
+
 GRID_HELPER.material.opacity = 0.5;
 GRID_HELPER.material.transparent = true;
 

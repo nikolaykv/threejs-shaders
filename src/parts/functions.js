@@ -1,7 +1,6 @@
 import {ORBIT_CONTROLS, RENDER} from "../script";
-import {sizes, CLOCK} from "./other_settings";
 import {CAMERA} from "./camera_settings";
-import {mixer} from "../objects/models";
+import {sizes} from "./other_settings";
 import {SCENE} from "./scene_settings";
 /**
  * =====================================================================
@@ -29,17 +28,7 @@ function screenResize() {
  * =====================================================================
  * Анимация сцены
  */
-let previousTime = 0;
-
 function animateScene() {
-
-    const ELAPSED_TIME = CLOCK.getElapsedTime();
-    const DELTA_TIME = ELAPSED_TIME - previousTime;
-    previousTime = ELAPSED_TIME;
-
-    if (mixer) {
-        mixer.update(DELTA_TIME);
-    }
 
     ORBIT_CONTROLS.update();
     RENDER.render(SCENE, CAMERA);

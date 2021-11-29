@@ -5,18 +5,14 @@ import {AXES_HELPER, GRID_HELPER} from "./parts/helpers";
 import {sizes, CANVAS} from "./parts/other_settings";
 import {CAMERA} from "./parts/camera_settings";
 import {GUI} from "./parts/dat_gui_settings";
-import {GLTF_LOADER} from "./objects/models";
 import {SCENE} from "./parts/scene_settings";
-import {FLOOR} from "./objects/meshes";
 import * as THREE from 'three';
 import './style.css';
 
 // Добавляем в сцену элементы
 SCENE.add(
-    //AXES_HELPER,
-    //GRID_HELPER,
-
-    FLOOR,
+    AXES_HELPER,
+    GRID_HELPER,
 
     DIRECTIONAL_LIGHT,
     AMBIENT_LIGHT
@@ -50,8 +46,6 @@ ORBIT_CONTROLS.enableDamping = true;
 const RENDER = new THREE.WebGLRenderer(
     {canvas: CANVAS}
 );
-RENDER.shadowMap.enabled = true;
-RENDER.shadowMap.type = THREE.PCFSoftShadowMap;
 RENDER.setSize(sizes.width, sizes.height);
 RENDER.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
