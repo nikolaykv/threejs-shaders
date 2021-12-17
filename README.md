@@ -1,5 +1,5 @@
 # Three.js Starter
-Демонстрация [результата](https://nikolaykv.github.io/threejs-animated-gltf-model/) 
+Демонстрация [результата](https://nikolaykv.github.io/three-js-burger/) 
 
 ## Установка
 Скачай [Node.js](https://nodejs.org/en/download/).
