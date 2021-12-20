@@ -1,19 +1,30 @@
 import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
-import burger from '../../static/models/burger.glb';
+import {updateAllMaterials} from "../parts/functions";
 import {SCENE} from "../parts/scene_settings";
+import {GUI} from "../parts/dat_gui_settings";
 
 
 const GLTF_LOADER = new GLTFLoader();
 
 GLTF_LOADER.load(
-  burger,
-  function (gltfBurger) {
-      gltfBurger.scene.scale.set(0.15, 0.15, 0.15);
-      gltfBurger.scene.position.set(0, -0.4, 0);
-      SCENE.add(gltfBurger.scene);
-  }
+    '/models/FlightHelmet/glTF/FlightHelmet.gltf',
+    function (model) {
+
+        model.scene.scale.set(10, 10, 10); // задать размеры модели
+        model.scene.position.set(0, -4, 0); // позицию
+        model.scene.rotation.y = Math.PI * 0.5; // начальный поворот
+
+        // dat.gui настройки rotation
+        let GLTFModelSettings = GUI.addFolder('Настройки поворота модели');
+        GLTFModelSettings.add(
+            model.scene.rotation, 'y',
+            -Math.PI, Math.PI, 0.001
+        ).name('Поворот модели');
+
+        SCENE.add(model.scene);
+
+        updateAllMaterials();
+    }
 );
 
-export {
-    GLTF_LOADER
-};
+export {GLTF_LOADER};

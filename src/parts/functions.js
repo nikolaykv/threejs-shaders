@@ -1,7 +1,10 @@
+import {SCENE, ENVIRONMENT_MAP} from "./scene_settings";
+import {DEBUG_OBJECT} from "./dat_gui_settings";
 import {ORBIT_CONTROLS, RENDER} from "../script";
 import {CAMERA} from "./camera_settings";
 import {sizes} from "./other_settings";
-import {SCENE} from "./scene_settings";
+import * as THREE from 'three';
+
 /**
  * =====================================================================
  * Логика изменения холста
@@ -35,7 +38,26 @@ function animateScene() {
     window.requestAnimationFrame(animateScene);
 }
 
+/**
+ * =====================================================================
+ * Обновить все материалы модели
+ */
+function updateAllMaterials() {
+    SCENE.traverse(function (child) {
+
+        // проверить, является ли child объектом экземпляра THREE.Mesh
+        // и является ли его материал экземпляром THREE.MeshStandardMaterial:
+        if (child instanceof THREE.Mesh && child.material instanceof THREE.MeshStandardMaterial) {
+            child.material.envMap = ENVIRONMENT_MAP;
+            child.material.envMapIntensity = DEBUG_OBJECT.envMapIntensity; // из dat_gui_settings.js
+        }
+
+    });
+}
+
+
 export {
     screenResize,
-    animateScene
+    animateScene,
+    updateAllMaterials
 };

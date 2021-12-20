@@ -1,15 +1,13 @@
 import * as THREE from "three";
 
-const AMBIENT_LIGHT = new THREE.AmbientLight(
-    0xffffff,
-    0.5
-);
 const DIRECTIONAL_LIGHT = new THREE.DirectionalLight(
-    0xffffff,
-    0.46
+    '#ffffff',
+    3
+);
+DIRECTIONAL_LIGHT.position.set(
+    0.25,
+    3,
+    - 2.25
 );
 
-export {
-    AMBIENT_LIGHT,
-    DIRECTIONAL_LIGHT
-}
+export {DIRECTIONAL_LIGHT}

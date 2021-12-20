@@ -1,22 +1,21 @@
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
-import {AMBIENT_LIGHT, DIRECTIONAL_LIGHT} from "./parts/light_settings";
+import {DIRECTIONAL_LIGHT} from "./parts/light_settings";
 import {screenResize, animateScene} from "./parts/functions";
 import {AXES_HELPER, GRID_HELPER} from "./parts/helpers";
 import {sizes, CANVAS} from "./parts/other_settings";
 import {CAMERA} from "./parts/camera_settings";
 import {GUI} from "./parts/dat_gui_settings";
-import {GLTF_LOADER} from "./objects/models";
 import {SCENE} from "./parts/scene_settings";
+import {GLTF_LOADER} from "./objects/models";
 import * as THREE from 'three';
 import './style.css';
 
 // Добавляем в сцену элементы
 SCENE.add(
-    AXES_HELPER,
-    GRID_HELPER,
+    // AXES_HELPER,
+    // GRID_HELPER,
 
     DIRECTIONAL_LIGHT,
-    AMBIENT_LIGHT
 );
 
 /**
@@ -49,6 +48,7 @@ const RENDER = new THREE.WebGLRenderer(
 );
 RENDER.setSize(sizes.width, sizes.height);
 RENDER.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+RENDER.physicallyCorrectLights = true;
 
 /**
  * =====================================================================
