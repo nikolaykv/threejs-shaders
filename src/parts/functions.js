@@ -1,5 +1,4 @@
 import {SCENE, ENVIRONMENT_MAP} from "./scene_settings";
-import {DEBUG_OBJECT} from "./dat_gui_settings";
 import {ORBIT_CONTROLS, RENDER} from "../script";
 import {CAMERA} from "./camera_settings";
 import {sizes} from "./other_settings";
@@ -22,6 +21,7 @@ function screenResize() {
         CAMERA.aspect = sizes.width / sizes.height;
         CAMERA.updateProjectionMatrix();
 
+        // Update render
         RENDER.setSize(sizes.width, sizes.height);
         RENDER.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     });
@@ -38,29 +38,7 @@ function animateScene() {
     window.requestAnimationFrame(animateScene);
 }
 
-/**
- * =====================================================================
- * Обновить все материалы модели
- */
-function updateAllMaterials() {
-    SCENE.traverse(function (child) {
-
-        // проверить, является ли child объектом экземпляра THREE.Mesh
-        // и является ли его материал экземпляром THREE.MeshStandardMaterial:
-        if (child instanceof THREE.Mesh && child.material instanceof THREE.MeshStandardMaterial) {
-            child.material.envMap = ENVIRONMENT_MAP;
-            child.material.envMapIntensity = DEBUG_OBJECT.envMapIntensity; // из dat_gui_settings.js
-
-            child.castShadow = true;
-            child.receiveShadow = true;
-        }
-
-    });
-}
-
-
 export {
     screenResize,
     animateScene,
-    updateAllMaterials
 };
