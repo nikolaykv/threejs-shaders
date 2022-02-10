@@ -50,6 +50,9 @@ function updateAllMaterials() {
         if (child instanceof THREE.Mesh && child.material instanceof THREE.MeshStandardMaterial) {
             child.material.envMap = ENVIRONMENT_MAP;
             child.material.envMapIntensity = DEBUG_OBJECT.envMapIntensity; // из dat_gui_settings.js
+
+            child.castShadow = true;
+            child.receiveShadow = true;
         }
 
     });

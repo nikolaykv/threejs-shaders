@@ -20,6 +20,8 @@ const ENVIRONMENT_MAP = new THREE.CubeTextureLoader().load([
     '/textures/environmentMaps/0/nz.jpg'
 ]);
 
+ENVIRONMENT_MAP.encoding = THREE.sRGBEncoding;
+
 SCENE.background = ENVIRONMENT_MAP;
 SCENE.environment = ENVIRONMENT_MAP;
 

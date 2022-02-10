@@ -1,6 +1,7 @@
 import * as dat from 'dat.gui';
 import {DIRECTIONAL_LIGHT} from "./light_settings";
 import {updateAllMaterials} from "./functions";
+import {RENDER} from "../script";
 
 /**
  * @type {GUI}
@@ -54,6 +55,5 @@ GUI.addFolder(
     DEBUG_OBJECT, 'envMapIntensity',
     0, 10, 0.001
 ).name('Интенсивность освещения карты окружения').onChange(updateAllMaterials);
-
 
 export {GUI, DEBUG_OBJECT};

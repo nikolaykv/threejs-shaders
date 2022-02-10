@@ -1,3 +1,4 @@
+import {DIRECTIONAL_LIGHT} from "./light_settings";
 import * as THREE from 'three';
 
 /**
@@ -17,7 +18,12 @@ const GRID_HELPER = new THREE.GridHelper(
 GRID_HELPER.material.opacity = 0.5;
 GRID_HELPER.material.transparent = true;
 
+const DIRECTIONAL_LIGHT_CAMERA_HELPER = new THREE.CameraHelper(
+    DIRECTIONAL_LIGHT.shadow.camera
+);
+
 export {
     AXES_HELPER,
     GRID_HELPER,
+    DIRECTIONAL_LIGHT_CAMERA_HELPER
 };
