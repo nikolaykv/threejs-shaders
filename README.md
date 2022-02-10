@@ -1,5 +1,5 @@
 # Three.js Starter
-Демонстрация [результата](https://nikolaykv.github.io/three-js-burger/) 
+Демонстрация [результата](https://nikolaykv.github.io/threejs-realistic-render/) 
 
 ## Установка
 Скачай [Node.js](https://nodejs.org/en/download/).
