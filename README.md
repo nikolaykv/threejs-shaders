@@ -1,5 +1,5 @@
 # Three.js Starter
-Демонстрация [результата](https://nikolaykv.github.io/threejs-realistic-render/) 
+Демонстрация [результата](https://nikolaykv.github.io/threejs-shaders/) 
 
 ## Установка
 Скачай [Node.js](https://nodejs.org/en/download/).
