@@ -1,7 +1,7 @@
-import {SCENE, ENVIRONMENT_MAP} from "./scene_settings";
 import {ORBIT_CONTROLS, RENDER} from "../script";
 import {CAMERA} from "./camera_settings";
 import {sizes} from "./other_settings";
+import {SCENE} from "./scene_settings";
 import * as THREE from 'three';
 
 /**
@@ -38,7 +38,29 @@ function animateScene() {
     window.requestAnimationFrame(animateScene);
 }
 
+/**
+ * =====================================================================
+ * Настройки геометрии MESH
+ */
+function meshGeometrySettings(GEOMETRY) {
+
+    const COUNT = GEOMETRY.attributes.position.count;
+
+    const RANDOMS = new Float32Array(COUNT);
+
+    for(let i = 0; i < COUNT; i++)
+    {
+        RANDOMS[i] = Math.random();
+    }
+
+    return GEOMETRY.setAttribute(
+        'aRandom',
+        new THREE.BufferAttribute(RANDOMS, 1)
+    );
+}
+
 export {
     screenResize,
     animateScene,
+    meshGeometrySettings,
 };
