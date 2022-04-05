@@ -12,8 +12,8 @@ import {MESH} from "./objects/models";
 
 // Добавляем в сцену элементы
 SCENE.add(
-    AXES_HELPER,
-    GRID_HELPER,
+    // AXES_HELPER,
+    // GRID_HELPER,
     MESH
 );
 

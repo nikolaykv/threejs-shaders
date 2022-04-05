@@ -1,3 +1,4 @@
+import * as THREE from "three";
 /**
  * Размеры холста
  *
@@ -13,7 +14,13 @@ let sizes = {
  */
 const CANVAS = document.querySelector('canvas.webgl');
 
+/**
+ * @type {Clock}
+ */
+const CLOCK = new THREE.Clock();
+
 export {
     sizes,
-    CANVAS
+    CANVAS,
+    CLOCK
 };

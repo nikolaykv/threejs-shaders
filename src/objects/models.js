@@ -1,6 +1,5 @@
 import lessonFragmentShader from '../shaders/lesson/fragment.glsl';
 import lessonVertexShader from '../shaders/lesson/vertex.glsl';
-import {meshGeometrySettings} from "../parts/functions";
 import * as THREE from 'three';
 
 
@@ -11,19 +10,27 @@ const GEOMETRY = new THREE.PlaneBufferGeometry(
     32
 );
 
-// Функция настройки геометрии MESH
-meshGeometrySettings(GEOMETRY);
-
-const MESH = new THREE.Mesh(
-    GEOMETRY,
-    new THREE.RawShaderMaterial({
+const MATERIAL = new THREE.RawShaderMaterial(
+    {
         vertexShader: lessonVertexShader,
         fragmentShader: lessonFragmentShader,
 
-        //wireframe: true,
+        // wireframe: true,
+        // transparent: true,
 
-        transparent: true,
-    })
+        uniforms: {
+            uFrequency: {value: new THREE.Vector2(10, 5)},
+            uTime: {value: 0},
+            uColor: { value: new THREE.Color('orange') }
+        },
+    }
 );
 
-export {MESH};
+const MESH = new THREE.Mesh(
+    GEOMETRY,
+    MATERIAL,
+);
+
+MESH.scale.y = 2 / 3;
+
+export {MESH, MATERIAL, GEOMETRY};

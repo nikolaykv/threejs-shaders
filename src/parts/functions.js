@@ -1,8 +1,10 @@
+import {MATERIAL, GEOMETRY} from "../objects/models";
 import {ORBIT_CONTROLS, RENDER} from "../script";
+import {sizes, CLOCK} from "./other_settings";
 import {CAMERA} from "./camera_settings";
-import {sizes} from "./other_settings";
 import {SCENE} from "./scene_settings";
 import * as THREE from 'three';
+
 
 /**
  * =====================================================================
@@ -33,6 +35,7 @@ function screenResize() {
  */
 function animateScene() {
 
+    MATERIAL.uniforms.uTime.value = CLOCK.getElapsedTime();
     ORBIT_CONTROLS.update();
     RENDER.render(SCENE, CAMERA);
     window.requestAnimationFrame(animateScene);
@@ -61,6 +64,6 @@ function meshGeometrySettings(GEOMETRY) {
 
 export {
     screenResize,
-    animateScene,
     meshGeometrySettings,
+    animateScene,
 };
