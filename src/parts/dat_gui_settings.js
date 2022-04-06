@@ -10,6 +10,7 @@ const GUI = new dat.GUI({
 
 
 let frequency = GUI.addFolder('Частота');
+let wireframe = GUI.addFolder('Каркас');
 
 frequency.add(
     MATERIAL.uniforms.uFrequency.value,
@@ -20,5 +21,12 @@ frequency.add(
     MATERIAL.uniforms.uFrequency.value,
     'y', 0, 20, 0.01
 ).name("Частота вершинного шейдера по оси Y");
+
+wireframe.add(
+    MATERIAL, 'wireframe'
+).onChange(function (value) {
+    this.wireframe = value;
+}).name('Показать/скрыть каркас модели');
+
 
 export {GUI};
