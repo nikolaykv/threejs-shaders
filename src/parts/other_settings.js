@@ -27,7 +27,7 @@ const TEXTURE_LOADER = new THREE.TextureLoader();
 /**
  * @type {Texture}
  */
-const FLAG_TEXTURE = TEXTURE_LOADER.load('/textures/flag.jpg');
+const FLAG_TEXTURE = TEXTURE_LOADER.load('./textures/flag.jpg');
 
 export {
     sizes,
